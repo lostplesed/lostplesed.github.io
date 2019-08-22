@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>一个没有正确初始化引发的bug | lostplesed</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="optimize">
+    
+    <meta name="description" content="现象 最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的">
+<meta name="keywords" content="optimize">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个没有正确初始化引发的bug">
+<meta property="og:url" content="http://lostplesed.github.io/2014/11/27/一个没有正确初始化引发的bug/index.html">
+<meta property="og:site_name" content="lostplesed">
+<meta property="og:description" content="现象 最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-21T14:06:47.234Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个没有正确初始化引发的bug">
+<meta name="twitter:description" content="现象 最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Program/">Program</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-一个没有正确初始化引发的bug" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        一个没有正确初始化引发的bug
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2014/11/27/一个没有正确初始化引发的bug/" class="article-date">
+            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/optimize/">optimize</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><hr>
+<p>最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的程序充满了不可知的crash，随便点点就会crash。难道刚刚看到的都是幻象，于是我又连上了IDE启动了程序，想查查到底是为什么会随机的crash，诡异的事情发生了，在你连接上IDE后，crash再也无法重现了，我第一个想到的是传说中的海森堡Bug：</p>
+<pre><code>海森堡Bug有这样一种特性：当你试图跟踪它时，它会突然消失或改变行为。它取自德国物理学家海森堡的不确定性原理（中学课本中可能称作“测不准原理”），其描述和解释的是量子物理中无法同时准确获知某一粒子位置和速度的现象。与其相关的还有一个现 象，被称为观察者效应，即观察某一对象时，无法绝对地做到仅仅观测而不改变该对象，而由观察者效应产生的问题，我们就称之为海森堡Bug。
+</code></pre><p>整理了一下现象表现：在应用程序debug模式下无论是IDE启动，或者用户自启动都不会出现随机触发的crash现象，在应用程序release模式下如果是IDE启动也不会crash，但是一旦用户自启动，即脱离任何开发tool后运行程序，则充满了不可知的crash。</p>
+<h1 id="追查问题"><a href="#追查问题" class="headerlink" title="追查问题"></a>追查问题</h1><hr>
+<p>首先你得知道所谓的海森堡Bug就是虾扯蛋，问题总是被巧妙的隐藏了起来。只要使用合理的方式就一定可以查出元凶，应用程序在运行时无非就是一系列01字符串在跑，它没有受到什么紫外线照射不会无缘无故的发生变异，也不会由于你的观察行为发生了量子坍塌让某些0变成了1，或者是1变成了0。</p>
+<p>但无疑这个问题是非常难差的，因为你没有一个有效的手段来定位问题出现的代码行，在出现问题的时候也就是应用程序崩溃的时候，在一个封闭的手机系统内，我也不知道怎么可以dump出程序的内存来分析，即使dump出了内存，没有对c/c++程序产生的字节码的深刻了解，你也不会知道问题出现在哪里。幸运的是我能知道某个界面一旦加载必然crash，而这个界面又足够的简单，它是由一些图片和Label组成，图片在程序中大量使用应该也不是问题，Label比较特殊它是由一个界面配置文件读取产生的，在屏蔽了有关代码后，crash确实没有出现了，可以首先定位问题出现在Label上面。</p>
+<p>但你还是不知道这是一个什么问题导致的crash，一般程序crash是因为空指针，野指针，内存不够这些原因引起的。既然不能很快的定位问题，那么只能通过一句一句的打log来追查问题出现的地方。但不幸的是wp8手机没有一个像android手机那样的logcat来接受程序的错误输出，也就是说你无法看到自己输出的log日志。</p>
+<p>大家都知道还有异常捕获这个强有力的工具，于是我在出问题的上层代码段那里try了起来，但还是很郁闷因为如果你catch了，还是不知道catch了什么鬼东西，因为你<strong>看不见</strong>。所以首先你得解决的问题是如何看见，我在程序界面的最上层加入了一个log输出界面来显示你所想要看到的东西。最后终于让我看到了这是一个由于std::bad_alloc异常产生的crash，顿时有种终于看到了梦寐以求的少女裸体的兴奋感觉，= =！好吧我大绅士了一把。这儿有两篇文章介绍了如何通过xaml界面显示异常。<br><a href="http://developer.nokia.com/community/wiki/Reporting_unhandled_exceptions_in_your_Windows_Phone_apps" target="_blank" rel="noopener">http://developer.nokia.com/community/wiki/Reporting_unhandled_exceptions_in_your_Windows_Phone_apps</a><br><a href="http://www.jimmycollins.org/blog/?p=434" target="_blank" rel="noopener">http://www.jimmycollins.org/blog/?p=434</a></p>
+<p>但不幸的是它们都只能捕获托管代码产生的异常，对c/c++产生的异常无能为力。在stackoverflow上面有人解决了这个问题。<a href="http://stackoverflow.com/questions/21274063/catching-unhandle-exception-in-c-cx" target="_blank" rel="noopener">http://stackoverflow.com/questions/21274063/catching-unhandle-exception-in-c-cx</a></p>
+<pre><code>C and C++ is just too low-level, it was not designed for this kind of trickery. The native code is called “unsafe” for a reason: it is totally your responsibility to write code that among other things never call methods on null pointers. If you fail, anything can happen, including but not limited to e.g. data corruption or security issues. 
+
+But if you really know what you’re doing, the __try  ..  __except keywords should prevent the crash in this case. Or better yet, specify the /Eha compiler flag, and use try { } catch (...) C++ statements — with this flag catch (...) should catch the structured exceptions as well. 
+</code></pre><p>现在我们可以确定异常是std::bad_alloc，该异常一般是由于内存分配出错造成的，在查看代码的过程中发现应用层没有内存分配的行为，那么可以确定是cocos2dx引擎本身内部的错误。这样的话在上层添加的显示log的代码不适合安插在引擎内部的代码里面，会带来很多的头文件循环包含问题，如果设计的巧妙也可以规避这个问题，但显然这不是一个正确的问题解决方案。</p>
+<p>回想之前的端游开发经验，往往我们会创建一个本地的日志文件，然后去记录一些信息，如果有必要，也可以把这个文件上传给服务器，供开发者分析问题。同样我们也可以在手机的存储空间里面创建这样的文件做记录。这种方法在用户模式下追查问题非常有用，简单的文件读写，获取系统时间，追加写入字符串就ok了，这里有段实现：</p>
+<pre><code>inline void write_file_log(const char* _log) {
+    string filePath = CCFileUtils::sharedFileUtils()-&gt;getWritablePath();
+    filePath += &quot;game_log.txt&quot;;
+
+    // time
+    struct cc_timeval now;
+    CCTime::gettimeofdayCocos2d(&amp;now, NULL);
+
+    struct tm *tm;  
+    time_t timep = now.tv_sec;  
+    tm = localtime(&amp;timep);  
+    int year = tm-&gt;tm_year + 1900;  
+    int month = tm-&gt;tm_mon + 1;  
+    int day = tm-&gt;tm_mday;  
+    int hour=tm-&gt;tm_hour;  
+    int min=tm-&gt;tm_min;  
+    int second=tm-&gt;tm_sec;
+
+    CCString* timeStr = CCString::createWithFormat(&quot;%d:%.2d:%.2d %.2d:%.2d:%.2d        &quot;, year, month, day, hour, min, second);
+    string log = timeStr-&gt;getCString();
+    log += _log;
+    log += &quot;\n&quot;;
+    FILE* file = fopen(filePath.c_str(), &quot;a+&quot;);
+    if (file) {
+        fputs(log.c_str(), file);
+        fclose(file);
+    }
+}
+</code></pre><p>通过在代码里面安插很多日志后，最终发现是某个变量的值异常的大，这个值会影响到后面一段内存分配的大小，一下子new了一块很大很大的内存，这在内存受限的移动设备中显然是个引起crash的问题。再继续追查发现CCLabelTTF的boundingbox没有被正确的初始化：</p>
+<pre><code>void CCFreeTypeFont::newLine() 
+{
+    m_currentLine = new FTLineInfo();
+    m_currentLine-&gt;width = 0;
+    m_currentLine-&gt;pen.x = 0;
+    m_currentLine-&gt;pen.y = 0;
+    memset(&amp;m_currentLine-&gt;bbox, 0, sizeof(m_currentLine-&gt;bbox)); // add init boundingbox
+}
+</code></pre><p>导致后面这里的一段计算使得m_textWidth的结果不可预知。</p>
+<pre><code>void CCFreeTypeFont::endLine() 
+{
+    if(m_currentLine)
+    {
+        m_lines.push_back(m_currentLine);
+        m_textWidth = max(m_textWidth,m_currentLine-&gt;bbox.xMax - m_currentLine-&gt;bbox.xMin); // can&apos;t predict
+        m_textHeight += m_lineHeight;
+    }
+}
+</code></pre><p>可能在debug和连接IDE的release模式下，这些变量会被正确的初始化为0，或者是统一的一个不可预期的值，这样在xMax-xMin的时候也不会出现一个极大值的情况。但是在release版本的用户模式下（非IDE启动），这两个值变得乱七八糟，相减出来的值可能是一个极大值。</p>
+<h1 id="佐证"><a href="#佐证" class="headerlink" title="佐证"></a>佐证</h1><hr>
+<p>在<a href="http://book.douban.com/subject/25815142/" target="_blank" rel="noopener">游戏引擎架构</a>这本书里有这么一段话：</p>
+<pre><code>I mentioned above that it can be very tricky to debug problems using a release build, due primarily to the way the compiler optimizes the code. Ideally, every programmer would prefer to do all of his or her debugging in a debug build. However, this is often not possible. Sometimes a bug occurs so rarely that you’ll jump at any chance to debug the problem, even if it occurs in a release build on someone else’s machine. Other bugs only occur in your release build, but magically disappear whenever you run the debug build. These dreaded release-only bugs are sometimes caused by uninitialized variables, because vari- ables and dynamically allocated memory blocks are often set to zero in debug mode, but are left containing garbage in a release build. Other common causes of release-only bugs include code that has been accidentally omitted from the release build (e.g., when important code is erroneously placed inside an asser- tion statement), data structures whose size or data member packing changes between debug and release builds, bugs that are only triggered by inlining or compiler-introduced optimizations, and (in rare cases) bugs in the compiler’s optimizer itself, causing it to emit incorrect code in a fully optimized build.
+
+Clearly, it behooves every programmer to be capable of debugging prob- lems in a release build, unpleasant as it may seem. The best ways to reduce the pain of debugging optimized code is to practice doing it and to expand your skill set in this area whenever you have the opportunity. Here are a few tips.
+</code></pre>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://lostplesed.github.io/2014/11/27/一个没有正确初始化引发的bug/" data-id="cjzmp5q6j00290km6miyp9p8l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "lostplesed"
+        },
+        "headline": "一个没有正确初始化引发的bug",
+        "image": "http://lostplesed.github.io",
+        "keywords": "optimize",
+        "genre": "Program",
+        "datePublished": "2014-11-27",
+        "dateCreated": "2014-11-27",
+        "dateModified": "2019-08-21",
+        "url": "http://lostplesed.github.io/2014/11/27/一个没有正确初始化引发的bug/",
+        "description": "现象
+最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的"
+        "wordCount": 665
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="bilibili" href="https://space.bilibili.com/20188545" target="_blank" rel="noopener">
+                        <i class="icon fa fa-bilibili"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/11/27/《塞尔达：梅祖拉的假面》追逐时间的游戏/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            《塞尔达：梅祖拉的假面》追逐时间的游戏
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2014/11/27/静态代码分析/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">静态代码分析</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/08/22/甲子园/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/koushien.jpg)" alt="甲子园" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2019/08/22/甲子园/" class="title">甲子园</a></p>
+                            <p class="item-date"><time datetime="2019-08-21T16:00:00.000Z" itemprop="datePublished">2019-08-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/john_carmack.webp)" alt="Programming_advice_from_John_Carmack" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="title">Programming_advice_from_John_Carmack</a></p>
+                            <p class="item-date"><time datetime="2019-02-19T16:00:00.000Z" itemprop="datePublished">2019-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/22/怎样尊重一个程序员/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/noogler-hat.jpg)" alt="怎样尊重一个程序员" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2018/11/22/怎样尊重一个程序员/" class="title">怎样尊重一个程序员</a></p>
+                            <p class="item-date"><time datetime="2018-11-21T16:00:00.000Z" itemprop="datePublished">2018-11-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/03/SeanCaroll：一名物理学家的生死观/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/SeanCarroll.jpg)" alt="SeanCaroll：一名物理学家的生死观" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2016/09/03/SeanCaroll：一名物理学家的生死观/" class="title">SeanCaroll：一名物理学家的生死观</a></p>
+                            <p class="item-date"><time datetime="2016-09-02T16:00:00.000Z" itemprop="datePublished">2016-09-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/03/深入理解计算机系统/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/cs_a_programmers_perspective.jpg)" alt="深入理解计算机系统" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2016/05/03/深入理解计算机系统/" class="title">深入理解计算机系统</a></p>
+                            <p class="item-date"><time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished">2016-05-03</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><span class="category-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hanasaku-Iroha/">Hanasaku Iroha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cat/">cat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/characters/">characters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrono-tigger/">chrono tigger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clanned/">clanned</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs/">cs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/encoding/">encoding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-camack/">john camack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-carmack/">john carmack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimize/">optimize</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physical/">physical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/program/">program</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/the-legend-of-zelda/">the legend of zelda</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yinwang/">yinwang</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Hanasaku-Iroha/" style="font-size: 10px;">Hanasaku Iroha</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cat/" style="font-size: 10px;">cat</a> <a href="/tags/characters/" style="font-size: 10px;">characters</a> <a href="/tags/chrono-tigger/" style="font-size: 10px;">chrono tigger</a> <a href="/tags/clanned/" style="font-size: 10px;">clanned</a> <a href="/tags/cs/" style="font-size: 10px;">cs</a> <a href="/tags/encoding/" style="font-size: 10px;">encoding</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/john-camack/" style="font-size: 10px;">john camack</a> <a href="/tags/john-carmack/" style="font-size: 13.33px;">john carmack</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/optimize/" style="font-size: 16.67px;">optimize</a> <a href="/tags/physical/" style="font-size: 10px;">physical</a> <a href="/tags/program/" style="font-size: 10px;">program</a> <a href="/tags/the-legend-of-zelda/" style="font-size: 13.33px;">the legend of zelda</a> <a href="/tags/yinwang/" style="font-size: 10px;">yinwang</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://number-none.com/blow/blog/">Jonathon Blow</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://caseymuratori.com">Casey Muratori</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 lostplesed</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
