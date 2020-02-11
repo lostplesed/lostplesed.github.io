@@ -152,16 +152,9 @@
         <p class="article-excerpt">
             
 开始使用命令行参数-i来启动lua解释器，那么解释器就会在运行完指定的程序块后进入交互模式。
-test.lua
-function foo( ... )
-    -- body
-    print(&quot;foo&quot;)
-end
-
-lua -i test.lua
-Lua 5.1.5  Copyright (C) 1994-2012 Lua.org, PUC-Rio
-&gt; foo()
-
+12345test.luafunction foo( ... )	-- body	print("foo")end
+1234lua -i test.luaLua 5.1.5  Copyright (C) 1994-2012 Lua.org, PUC-Rio&gt; foo()foo
+另一种运行程序块的方式
         </p>
     </div>
 </article>
