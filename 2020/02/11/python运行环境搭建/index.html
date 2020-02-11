@@ -12,19 +12,19 @@
     
         <meta name="keywords" content="python">
     
-    <meta name="description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 # miniconda3 export PATH=~/opt/">
+    <meta name="description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 12# miniconda3export PATH=~/opt">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python运行环境搭建">
 <meta property="og:url" content="http://lostplesed.github.io/2020/02/11/python运行环境搭建/index.html">
 <meta property="og:site_name" content="lostplesed">
-<meta property="og:description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 # miniconda3 export PATH=~/opt/">
+<meta property="og:description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 12# miniconda3export PATH=~/opt">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://lostplesed.github.io/images/conda.png">
-<meta property="og:updated_time" content="2020-02-11T12:40:43.872Z">
+<meta property="og:updated_time" content="2020-02-11T12:44:55.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python运行环境搭建">
-<meta name="twitter:description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 # miniconda3 export PATH=~/opt/">
+<meta name="twitter:description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 12# miniconda3export PATH=~/opt">
 <meta name="twitter:image" content="http://lostplesed.github.io/images/conda.png">
     
 
@@ -145,9 +145,8 @@
 <p>目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。</p>
 <p>安装对应版本的<a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener">miniconda</a>，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3</p>
 <p>将conda运行文件所在目录加入环境</p>
-<pre><code># miniconda3
-export PATH=~/opt/miniconda3/bin/:$PATH
-</code></pre><p>安装好后并没有激活任何环境，默认会存在一个叫base的环境，首先激活base环境，激活其他运行环境的命令类似</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> miniconda3</span><br><span class="line">export PATH=~/opt/miniconda3/bin/:$PATH</span><br></pre></td></tr></table></figure>
+<p>安装好后并没有激活任何环境，默认会存在一个叫base的环境，首先激活base环境，激活其他运行环境的命令类似</p>
 <pre><code>conda activate base
 </code></pre><p>第一次激活会提示初始化所在shell环境，这里初始化zsh</p>
 <pre><code>conda init zsh
@@ -187,7 +186,7 @@ conda install --channel https://conda.anaconda.org/menpo opencv3
 
 
 
-    <a data-url="http://lostplesed.github.io/2020/02/11/python运行环境搭建/" data-id="ck6hviwx100078rogtxbl8cqx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2020/02/11/python运行环境搭建/" data-id="ck6hvocir0007dwogi2uovy82" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -269,9 +268,8 @@ conda install --channel https://conda.anaconda.org/menpo opencv3
 目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。
 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3
 将conda运行文件所在目录加入环境
-# miniconda3
-export PATH=~/opt/"
-        "wordCount": 119
+12# miniconda3export PATH=~/opt"
+        "wordCount": 128
     }
 </script>
 
