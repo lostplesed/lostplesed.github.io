@@ -6,17 +6,24 @@
     
 
     
-    <title>Archive: 2016/5 | lostplesed</title>
+    <title>python运行环境搭建 | lostplesed</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="lostplesed">
-<meta property="og:url" content="http://lostplesed.github.io/archives/2016/05/index.html">
+        <meta name="keywords" content="python">
+    
+    <meta name="description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 # miniconda3 export PATH=~/opt/m">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python运行环境搭建">
+<meta property="og:url" content="http://lostplesed.github.io/2020/02/11/python运行环境搭建/index.html">
 <meta property="og:site_name" content="lostplesed">
+<meta property="og:description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 # miniconda3 export PATH=~/opt/m">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-11T12:35:54.926Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lostplesed">
+<meta name="twitter:title" content="python运行环境搭建">
+<meta name="twitter:description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 # miniconda3 export PATH=~/opt/m">
     
 
     
@@ -93,74 +100,182 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>Archive: 2016/5
+    <a class="page-title-link" href="/categories/Program/">Program</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-python运行环境搭建" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/05/03/深入理解计算机系统/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/cs_a_programmers_perspective.jpg)" alt="深入理解计算机系统" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span><a href="http://lostplesed.github.io/2016/05/03/深入理解计算机系统/#isso-thread"></a></span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Program/">Program</a>
-            </div>
-            <div class="date"><time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished">2016-05-03</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2016/05/03/深入理解计算机系统/">深入理解计算机系统</a>
+        python运行环境搭建
         </h1>
     
 
-        <p class="article-excerpt">
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2020/02/11/python运行环境搭建/" class="article-date">
+            <time datetime="2020-02-10T16:00:00.000Z" itemprop="datePublished">2020-02-11</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/python/">python</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。</p>
+<p>安装对应版本的<a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener">miniconda</a>，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3</p>
+<p>将conda运行文件所在目录加入环境</p>
+<pre><code># miniconda3
+export PATH=~/opt/miniconda3/bin/:$PATH
+</code></pre><p>安装好后并没有激活任何环境，默认会存在一个叫base的环境，首先激活base环境，激活其他运行环境的命令类似</p>
+<pre><code>conda activate base
+</code></pre><p>第一次激活会提示初始化所在shell环境，这里初始化zsh</p>
+<pre><code>conda init zsh
+</code></pre><p>创建python2最新版本的game环境</p>
+<pre><code>conda create --name game python=2
+</code></pre><p>创建指定python3.6版本的py3.6环境</p>
+<pre><code>conda create --name py3.6 python=3.6
+</code></pre><p>查看conda所有环境，前面有星号的是当前激活环境</p>
+<pre><code>~ conda info -e
+# conda environments:
+#
+base                     /Users/liuxing/opt/miniconda3
+game                  *  /Users/liuxing/opt/miniconda3/envs/game
+py3                      /Users/liuxing/opt/miniconda3/envs/py3
+</code></pre><p>删除py3环境</p>
+<pre><code>conda env remove -n py3.6
+</code></pre><p>查看conda版本</p>
+<pre><code>conda --version
+</code></pre><p>显示当前环境下已安装包信息</p>
+<pre><code>conda list
+</code></pre><p>添加下载channel</p>
+<pre><code>conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes
+</code></pre><p>搜索包</p>
+<pre><code>conda search tornado
+</code></pre><p>安装指定版本包</p>
+<pre><code>conda install package=version
+</code></pre><p>升级指定版本包</p>
+<pre><code>conda update package=version
+</code></pre><p>指定包的来源，加一个-c表示从<a href="http://anaconda.org下载资源包" target="_blank" rel="noopener">http://anaconda.org下载资源包</a></p>
+<pre><code>conda install -c spyder-ide spyder=3.0.0
+conda install --channel https://conda.anaconda.org/menpo opencv3
+</code></pre>
+        </div>
+        <footer class="article-footer">
             
 
-        </p>
+
+
+    <a data-url="http://lostplesed.github.io/2020/02/11/python运行环境搭建/" data-id="ck6hvcwyj000228og9lxmav6f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "lostplesed"
+        },
+        "headline": "python运行环境搭建",
+        "image": "http://lostplesed.github.io",
+        "keywords": "python",
+        "genre": "Program",
+        "datePublished": "2020-02-11",
+        "dateCreated": "2020-02-11",
+        "dateModified": "2020-02-11",
+        "url": "http://lostplesed.github.io/2020/02/11/python运行环境搭建/",
+        "description": "目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。
+安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3
+将conda运行文件所在目录加入环境
+# miniconda3
+export PATH=~/opt/m"
+        "wordCount": 117
+    }
+</script>
+
 </article>
-    
-        </div>
-    
 
-
-    </div></section>
+    <section id="comments">
+    
+    </section>
 
 
 
@@ -198,6 +313,19 @@
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/08/22/甲子园/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">甲子园</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
