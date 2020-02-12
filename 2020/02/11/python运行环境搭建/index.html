@@ -21,7 +21,7 @@
 <meta property="og:description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 12# miniconda3export PATH=~/opt">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://lostplesed.github.io/images/conda.png">
-<meta property="og:updated_time" content="2020-02-11T12:44:55.791Z">
+<meta property="og:updated_time" content="2020-02-12T01:40:22.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python运行环境搭建">
 <meta name="twitter:description" content="目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3 将conda运行文件所在目录加入环境 12# miniconda3export PATH=~/opt">
@@ -141,52 +141,45 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="/images/conda.png" alt="img"></p>
+            <p><img src="/images/conda.png" alt></p>
 <p>目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。</p>
 <p>安装对应版本的<a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener">miniconda</a>，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3</p>
 <p>将conda运行文件所在目录加入环境</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> miniconda3</span><br><span class="line">export PATH=~/opt/miniconda3/bin/:$PATH</span><br></pre></td></tr></table></figure>
 <p>安装好后并没有激活任何环境，默认会存在一个叫base的环境，首先激活base环境，激活其他运行环境的命令类似</p>
-<pre><code>conda activate base
-</code></pre><p>第一次激活会提示初始化所在shell环境，这里初始化zsh</p>
-<pre><code>conda init zsh
-</code></pre><p>创建python2最新版本的game环境</p>
-<pre><code>conda create --name game python=2
-</code></pre><p>创建指定python3.6版本的py3.6环境</p>
-<pre><code>conda create --name py3.6 python=3.6
-</code></pre><p>查看conda所有环境，前面有星号的是当前激活环境</p>
-<pre><code>~ conda info -e
-# conda environments:
-#
-base                     /Users/liuxing/opt/miniconda3
-game                  *  /Users/liuxing/opt/miniconda3/envs/game
-py3                      /Users/liuxing/opt/miniconda3/envs/py3
-</code></pre><p>删除py3环境</p>
-<pre><code>conda env remove -n py3.6
-</code></pre><p>查看conda版本</p>
-<pre><code>conda --version
-</code></pre><p>显示当前环境下已安装包信息</p>
-<pre><code>conda list
-</code></pre><p>添加下载channel</p>
-<pre><code>conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
-conda config --set show_channel_urls yes
-</code></pre><p>搜索包</p>
-<pre><code>conda search tornado
-</code></pre><p>安装指定版本包</p>
-<pre><code>conda install package=version
-</code></pre><p>升级指定版本包</p>
-<pre><code>conda update package=version
-</code></pre><p>指定包的来源，加一个-c表示从<a href="http://anaconda.org下载资源包" target="_blank" rel="noopener">http://anaconda.org下载资源包</a></p>
-<pre><code>conda install -c spyder-ide spyder=3.0.0
-conda install --channel https://conda.anaconda.org/menpo opencv3
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate base</span><br></pre></td></tr></table></figure>
+<p>第一次激活会提示初始化所在shell环境，这里初始化zsh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda init zsh</span><br></pre></td></tr></table></figure>
+<p>创建python2最新版本的game环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name game python=2</span><br></pre></td></tr></table></figure>
+<p>创建指定python3.6版本的py3.6环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name py3.6 python=3.6</span><br></pre></td></tr></table></figure>
+<p>查看conda所有环境，前面有星号的是当前激活环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">~ conda info -e</span><br><span class="line"><span class="meta">#</span> conda environments:</span><br><span class="line"><span class="meta">#</span></span><br><span class="line">base                     /Users/liuxing/opt/miniconda3</span><br><span class="line">game                  *  /Users/liuxing/opt/miniconda3/envs/game</span><br><span class="line">py3                      /Users/liuxing/opt/miniconda3/envs/py3</span><br></pre></td></tr></table></figure>
+<p>删除py3环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda env remove -n py3.6</span><br></pre></td></tr></table></figure>
+<p>查看conda版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
+<p>显示当前环境下已安装包信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
+<p>添加下载channel</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+<p>搜索包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda search tornado</span><br></pre></td></tr></table></figure>
+<p>安装指定版本包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install package=version</span><br></pre></td></tr></table></figure>
+<p>升级指定版本包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update package=version</span><br></pre></td></tr></table></figure>
+<p>指定包的来源，加一个-c表示从<a href="http://anaconda.org下载资源包" target="_blank" rel="noopener">http://anaconda.org下载资源包</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install -c spyder-ide spyder=3.0.0</span><br><span class="line">conda install --channel https://conda.anaconda.org/menpo opencv3</span><br></pre></td></tr></table></figure>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://lostplesed.github.io/2020/02/11/python运行环境搭建/" data-id="ck6hw0tu70007veog19fuup6q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2020/02/11/python运行环境搭建/" data-id="ck6ingys900071vog943jzbvw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -262,14 +255,14 @@ conda install --channel https://conda.anaconda.org/menpo opencv3
         "genre": "Program",
         "datePublished": "2020-02-11",
         "dateCreated": "2020-02-11",
-        "dateModified": "2020-02-11",
+        "dateModified": "2020-02-12",
         "url": "http://lostplesed.github.io/2020/02/11/python运行环境搭建/",
         "description": "
 目标是实现各个python运行环境的创建和隔离，比如你需要一个python环境来运行游戏相关的代码，另外一个python环境来运行科学计算有关的代码，等等。
 安装对应版本的miniconda，这里用macos系统来说明。安装说明里面会写miniconda安装路径为~/opt/miniconda3
 将conda运行文件所在目录加入环境
 12# miniconda3export PATH=~/opt"
-        "wordCount": 128
+        "wordCount": 222
     }
 </script>
 
@@ -424,10 +417,10 @@ conda install --channel https://conda.anaconda.org/menpo opencv3
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/03/深入理解计算机系统/" class="thumbnail">
+                            <a href="/2015/12/16/人生不仅仅只有失去/" class="thumbnail">
     
     
-        <span style="background-image:url(/images/cs_a_programmers_perspective.jpg)" alt="深入理解计算机系统" class="thumbnail-image"></span>
+        <span style="background-image:url(/images/kojima_productions.jpg)" alt="人生不仅仅只有失去" class="thumbnail-image"></span>
     
     
 </a>
@@ -435,9 +428,9 @@ conda install --channel https://conda.anaconda.org/menpo opencv3
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
-                            <p class="item-title"><a href="/2016/05/03/深入理解计算机系统/" class="title">深入理解计算机系统</a></p>
-                            <p class="item-date"><time datetime="2016-05-02T16:00:00.000Z" itemprop="datePublished">2016-05-03</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2015/12/16/人生不仅仅只有失去/" class="title">人生不仅仅只有失去</a></p>
+                            <p class="item-date"><time datetime="2015-12-15T16:00:00.000Z" itemprop="datePublished">2015-12-16</time></p>
                         </div>
                     </li>
                 
@@ -450,7 +443,7 @@ conda install --channel https://conda.anaconda.org/menpo opencv3
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><span class="category-list-count">12</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><span class="category-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -460,7 +453,7 @@ conda install --channel https://conda.anaconda.org/menpo opencv3
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">12</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">12</span></li></ul>
         </div>
     </div>
 
@@ -470,7 +463,7 @@ conda install --channel https://conda.anaconda.org/menpo opencv3
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hanasaku-Iroha/">Hanasaku Iroha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cat/">cat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/characters/">characters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrono-tigger/">chrono tigger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clanned/">clanned</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cs/">cs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/encoding/">encoding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-camack/">john camack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-carmack/">john carmack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimize/">optimize</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physical/">physical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/the-legend-of-zelda/">the legend of zelda</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hanasaku-Iroha/">Hanasaku Iroha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cat/">cat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/characters/">characters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrono-tigger/">chrono tigger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clanned/">clanned</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/encoding/">encoding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-camack/">john camack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-carmack/">john carmack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lua/">lua</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimize/">optimize</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physical/">physical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/the-legend-of-zelda/">the legend of zelda</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -480,7 +473,7 @@ conda install --channel https://conda.anaconda.org/menpo opencv3
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Hanasaku-Iroha/" style="font-size: 10px;">Hanasaku Iroha</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cat/" style="font-size: 10px;">cat</a> <a href="/tags/characters/" style="font-size: 10px;">characters</a> <a href="/tags/chrono-tigger/" style="font-size: 10px;">chrono tigger</a> <a href="/tags/clanned/" style="font-size: 10px;">clanned</a> <a href="/tags/cs/" style="font-size: 10px;">cs</a> <a href="/tags/encoding/" style="font-size: 10px;">encoding</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/john-camack/" style="font-size: 10px;">john camack</a> <a href="/tags/john-carmack/" style="font-size: 13.33px;">john carmack</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/optimize/" style="font-size: 16.67px;">optimize</a> <a href="/tags/physical/" style="font-size: 10px;">physical</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/the-legend-of-zelda/" style="font-size: 13.33px;">the legend of zelda</a>
+            <a href="/tags/Hanasaku-Iroha/" style="font-size: 10px;">Hanasaku Iroha</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cat/" style="font-size: 10px;">cat</a> <a href="/tags/characters/" style="font-size: 10px;">characters</a> <a href="/tags/chrono-tigger/" style="font-size: 10px;">chrono tigger</a> <a href="/tags/clanned/" style="font-size: 10px;">clanned</a> <a href="/tags/encoding/" style="font-size: 10px;">encoding</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/john-camack/" style="font-size: 10px;">john camack</a> <a href="/tags/john-carmack/" style="font-size: 13.33px;">john carmack</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/lua/" style="font-size: 10px;">lua</a> <a href="/tags/optimize/" style="font-size: 16.67px;">optimize</a> <a href="/tags/physical/" style="font-size: 10px;">physical</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/the-legend-of-zelda/" style="font-size: 13.33px;">the legend of zelda</a>
         </div>
     </div>
 
