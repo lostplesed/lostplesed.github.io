@@ -168,17 +168,17 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2014/11/27/图像编程黑皮书序/" class="thumbnail">
+        <a href="/2014/11/27/autorelease到底auto在哪里/" class="thumbnail">
     
     
-        <span style="background-image:url(/images/7.jpg)" alt="图像编程黑皮书序" class="thumbnail-image"></span>
+        <span style="background-image:url(/images/ios.png)" alt="autorelease到底auto在哪里" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span><a href="http://lostplesed.github.io/2014/11/27/图像编程黑皮书序/#isso-thread"></a></span>
+        <span><a href="http://lostplesed.github.io/2014/11/27/autorelease到底auto在哪里/#isso-thread"></a></span>
     
 </span>
 
@@ -196,13 +196,14 @@
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2014/11/27/图像编程黑皮书序/">图像编程黑皮书序</a>
+        <a href="/2014/11/27/autorelease到底auto在哪里/">autorelease到底auto在哪里</a>
         </h1>
     
 
         <p class="article-excerpt">
             
-I got my start programming on Apple II computers at school, and almost all of my early work was on the Apple platform. After graduating, it quickly became obvious that I was going to have trouble pay
+Retain &amp; Release在Objective-C中，每一个对象都有一个引用计数值(reference count)。对于新创建的对象其初始值为1，向一个对象发送retain消息会让它的引用计数加1；而向其发送release消息则会对让引用计数减1。如果引用计数爲1時被release，则这个对象会被发送一个dealloc消息进行销毁, 所以也不會存在计数为0的对象。
+所以一般在Ob
         </p>
     </div>
 </article>
