@@ -21,7 +21,7 @@
 <meta property="og:description" content="词法结构java程序是用Unicode字符集编写的，java编程语言使用UTF-16编码来表示16位代码单元系列中的文本，少数API（主要在Character类中）使用32位整数将码点表示成独立的实体。java平台提供了用于在两种表示之间进行转换的方法。除了注释，标识符，以及字符和字符串的内容之外，程序中的所有输入元素都只是用ASCII字符[以及产生ASCII字符的Unicode转义符号]构成的">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://lostplesed.github.io/images/java.png">
-<meta property="og:updated_time" content="2020-02-19T03:45:19.671Z">
+<meta property="og:updated_time" content="2020-02-19T04:06:54.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java学习笔记">
 <meta name="twitter:description" content="词法结构java程序是用Unicode字符集编写的，java编程语言使用UTF-16编码来表示16位代码单元系列中的文本，少数API（主要在Character类中）使用32位整数将码点表示成独立的实体。java平台提供了用于在两种表示之间进行转换的方法。除了注释，标识符，以及字符和字符串的内容之外，程序中的所有输入元素都只是用ASCII字符[以及产生ASCII字符的Unicode转义符号]构成的">
@@ -209,21 +209,24 @@
 <li>Double r转换成r.doubleValue()</li>
 <li>如果r是null，那么拆箱转换将抛出一个NullPointerException</li>
 </ul>
-<h1 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h1><p>包名称的第一个标识符包含两个或三个小写字母，它们指定了一个Internet域，如com，edu，gov，mil，net，org；或者是两个字母的ISO国家代码，如uk或jp。</p>
-<pre><code>com.JavaSoft.jag.Oak
-org.npr.pledge.driver
-uk.ac.city.rugby.game
-</code></pre><p>仅打算提供本地使用的包的名称应该具有以小写字母开头的第一个标识符，但是第一个标识符明确地不应该是标识符java，开始于标识符java的包名称是Sun保留的，用于命名Java平台包。</p>
-<p>类和接口类型名称应该是说明性的名词或名词短语，不要使名称过长，采用大小写混合的形式，并且大写每个单词的首字母。</p>
-<pre><code>ClassLoader
-SecurityManager
-Thread
-Dictionary
-BufferedInputStream
-</code></pre><p>容器类型应该为其元素类型使用名称E。映射应该为其键的类型使用K，为其值的类型使用V。名称X应该用于任意的异常类型。当无需关于某个类型的更多知识即可区分它们时，我们应该为类型使用T。如果有多个指示任意类型的类型参数，则其中一个应该使用字母表中T的邻近字母，如S。一种替代方法是，使用数字下标（例如，T1，T2）来区分不同的类型变量。</p>
-<pre><code>public class HashSet&lt;E&gt; extends AbstractSet&lt;E&gt; { ... }
-public class 
-</code></pre><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<h1 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h1><h2 id="包名称"><a href="#包名称" class="headerlink" title="包名称"></a>包名称</h2><p>包名称的第一个标识符包含两个或三个小写字母，它们指定了一个Internet域，如com，edu，gov，mil，net，org；或者是两个字母的ISO国家代码，如uk或jp。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">com.JavaSoft.jag.Oak</span><br><span class="line">org.npr.pledge.driver</span><br><span class="line">uk.ac.city.rugby.game</span><br></pre></td></tr></table></figure>
+<p>仅打算提供本地使用的包的名称应该具有以小写字母开头的第一个标识符，但是第一个标识符明确地不应该是标识符java，开始于标识符java的包名称是Sun保留的，用于命名Java平台包。</p>
+<h2 id="类和接口类型名称"><a href="#类和接口类型名称" class="headerlink" title="类和接口类型名称"></a>类和接口类型名称</h2><p>类和接口类型名称应该是说明性的名词或名词短语，不要使名称过长，采用大小写混合的形式，并且大写每个单词的首字母。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader</span><br><span class="line">SecurityManager</span><br><span class="line">Thread</span><br><span class="line">Dictionary</span><br><span class="line">BufferedInputStream</span><br></pre></td></tr></table></figure>
+<p>容器类型应该为其元素类型使用名称E。映射应该为其键的类型使用K，为其值的类型使用V。名称X应该用于任意的异常类型。当无需关于某个类型的更多知识即可区分它们时，我们应该为类型使用T。如果有多个指示任意类型的类型参数，则其中一个应该使用字母表中T的邻近字母，如S。一种替代方法是，使用数字下标（例如，T1，T2）来区分不同的类型变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class HashSet&lt;E&gt; extends AbstractSet&lt;E&gt; &#123; ... &#125;</span><br><span class="line">public class HashMap&lt;K,V&gt; extends AbstractMap&lt;K,V&gt; &#123; ... &#125;</span><br><span class="line">public class ThreadLoacl&lt;T&gt; &#123; ... &#125;</span><br><span class="line">public interface Functor&lt;T, X entends Throwable&gt; &#123;</span><br><span class="line">	T eval() throws X;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法名称"><a href="#方法名称" class="headerlink" title="方法名称"></a>方法名称</h2><p>方法名称应该是动词或动词短语，采用大小写混合的形式，名称的首字母小写，而任何后续单词的首字母则大写。</p>
+<ul>
+<li>应该把get和set一个可能被试作变量V的熟悉的方法命名为getV和setV。例如类Thread的方法getPriority和setPriority。</li>
+<li>应该把返回某个对象长度的方法命名为length</li>
+<li>对于测试关于某个对象的boolean条件V的方法，应该命名为isV。例如类Thread的方法isInterrupted。</li>
+<li>对于将其对象转换成一种特殊格式F的方法，应该命名toF。例如类Object的方法toString，类java.util.Date的方法toLocaleString和toGMTString。</li>
+</ul>
+<h2 id="常量名称"><a href="#常量名称" class="headerlink" title="常量名称"></a>常量名称</h2><p>接口类型中的常量名称应该是一个或多个单词，缩写词或简写词的序列，它们全部大写，各个成分之间用下划线”_”字符隔开，类类型的final变量传统上也可以采用这样的命名方式。常量名称应该具有说明性，不应该不必要的进行简写。例如类Character的MIN_VALUE, MAX_VALUE, MIN_RADIX和MAX_RADIX</p>
+<h2 id="protected字段访问控制"><a href="#protected字段访问控制" class="headerlink" title="protected字段访问控制"></a>protected字段访问控制</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> points;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">int</span> x, y;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">warp</span><span class="params">(threePoint.Point3d a)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (a.z &gt; <span class="number">0</span>) <span class="comment">// compile-time error: canot access a.z</span></span><br><span class="line">			a.delta(<span class="keyword">this</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> threePoint;</span><br><span class="line"><span class="keyword">import</span> points.Point;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Point3d</span> <span class="keyword">extends</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">int</span> z;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delta</span><span class="params">(Point p)</span> </span>&#123;</span><br><span class="line">		p.x += <span class="keyword">this</span>.x; <span class="comment">// compile-time error: canot access p.x</span></span><br><span class="line">		p.y += <span class="keyword">this</span>.y; <span class="comment">// compile-time error: canot access p.y</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delta3d</span><span class="params">(Point3d q)</span> </span>&#123;</span><br><span class="line">		q.x += <span class="keyword">this</span>.x;</span><br><span class="line">		q.y += <span class="keyword">this</span>.y;</span><br><span class="line">		q.z += <span class="keyword">this</span>.z;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类Point3d中的delta方法会发生编译错误：它不能访问其参数p的protected成员x和y，这是由于虽然Point3d（在该类中发生了对字段x和y的引用）是Point（在该类中声明了x和y）的子类，但是它未包括在Point（参数p的类型）的实现中。方法delta3d可以访问其参数q的protected成员，这是由于类Point3d是Point的子类，并且包括在Point3d的实现中。</p>
+<h1 id="包"><a href="#包" class="headerlink" title="包"></a>包</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li>java编程规范（第三版）</li>
 </ol>
 
@@ -233,7 +236,7 @@ public class
 
 
 
-    <a data-url="http://lostplesed.github.io/2020/02/13/java学习笔记/" data-id="ck6srx7580004fiog2cmea03a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2020/02/13/java学习笔记/" data-id="ck6su94ii0028xnogdzo4pv8e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -313,7 +316,7 @@ public class
         "url": "http://lostplesed.github.io/2020/02/13/java学习笔记/",
         "description": "
 词法结构java程序是用Unicode字符集编写的，java编程语言使用UTF-16编码来表示16位代码单元系列中的文本，少数API（主要在Character类中）使用32位整数将码点表示成独立的实体。java平台提供了用于在两种表示之间进行转换的方法。除了注释，标识符，以及字符和字符串的内容之外，程序中的所有输入元素都只是用ASCII字符[以及产生ASCII字符的Unicode转义符号]构成的"
-        "wordCount": 659
+        "wordCount": 894
     }
 </script>
 
