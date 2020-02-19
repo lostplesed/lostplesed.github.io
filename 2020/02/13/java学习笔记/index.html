@@ -21,7 +21,7 @@
 <meta property="og:description" content="词法结构java程序是用Unicode字符集编写的，java编程语言使用UTF-16编码来表示16位代码单元系列中的文本，少数API（主要在Character类中）使用32位整数将码点表示成独立的实体。java平台提供了用于在两种表示之间进行转换的方法。除了注释，标识符，以及字符和字符串的内容之外，程序中的所有输入元素都只是用ASCII字符[以及产生ASCII字符的Unicode转义符号]构成的">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://lostplesed.github.io/images/java.png">
-<meta property="og:updated_time" content="2020-02-19T03:33:11.879Z">
+<meta property="og:updated_time" content="2020-02-19T03:45:19.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java学习笔记">
 <meta name="twitter:description" content="词法结构java程序是用Unicode字符集编写的，java编程语言使用UTF-16编码来表示16位代码单元系列中的文本，少数API（主要在Character类中）使用32位整数将码点表示成独立的实体。java平台提供了用于在两种表示之间进行转换的方法。除了注释，标识符，以及字符和字符串的内容之外，程序中的所有输入元素都只是用ASCII字符[以及产生ASCII字符的Unicode转义符号]构成的">
@@ -209,7 +209,21 @@
 <li>Double r转换成r.doubleValue()</li>
 <li>如果r是null，那么拆箱转换将抛出一个NullPointerException</li>
 </ul>
-<h1 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<h1 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h1><p>包名称的第一个标识符包含两个或三个小写字母，它们指定了一个Internet域，如com，edu，gov，mil，net，org；或者是两个字母的ISO国家代码，如uk或jp。</p>
+<pre><code>com.JavaSoft.jag.Oak
+org.npr.pledge.driver
+uk.ac.city.rugby.game
+</code></pre><p>仅打算提供本地使用的包的名称应该具有以小写字母开头的第一个标识符，但是第一个标识符明确地不应该是标识符java，开始于标识符java的包名称是Sun保留的，用于命名Java平台包。</p>
+<p>类和接口类型名称应该是说明性的名词或名词短语，不要使名称过长，采用大小写混合的形式，并且大写每个单词的首字母。</p>
+<pre><code>ClassLoader
+SecurityManager
+Thread
+Dictionary
+BufferedInputStream
+</code></pre><p>容器类型应该为其元素类型使用名称E。映射应该为其键的类型使用K，为其值的类型使用V。名称X应该用于任意的异常类型。当无需关于某个类型的更多知识即可区分它们时，我们应该为类型使用T。如果有多个指示任意类型的类型参数，则其中一个应该使用字母表中T的邻近字母，如S。一种替代方法是，使用数字下标（例如，T1，T2）来区分不同的类型变量。</p>
+<pre><code>public class HashSet&lt;E&gt; extends AbstractSet&lt;E&gt; { ... }
+public class 
+</code></pre><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li>java编程规范（第三版）</li>
 </ol>
 
@@ -219,7 +233,7 @@
 
 
 
-    <a data-url="http://lostplesed.github.io/2020/02/13/java学习笔记/" data-id="ck6srim7f000570ogmw5znhlk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2020/02/13/java学习笔记/" data-id="ck6srx7580004fiog2cmea03a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -299,7 +313,7 @@
         "url": "http://lostplesed.github.io/2020/02/13/java学习笔记/",
         "description": "
 词法结构java程序是用Unicode字符集编写的，java编程语言使用UTF-16编码来表示16位代码单元系列中的文本，少数API（主要在Character类中）使用32位整数将码点表示成独立的实体。java平台提供了用于在两种表示之间进行转换的方法。除了注释，标识符，以及字符和字符串的内容之外，程序中的所有输入元素都只是用ASCII字符[以及产生ASCII字符的Unicode转义符号]构成的"
-        "wordCount": 650
+        "wordCount": 659
     }
 </script>
 
