@@ -21,7 +21,7 @@
 <meta property="og:description" content="词法结构java程序是用Unicode字符集编写的，java编程语言使用UTF-16编码来表示16位代码单元系列中的文本，少数API（主要在Character类中）使用32位整数将码点表示成独立的实体。java平台提供了用于在两种表示之间进行转换的方法。除了注释，标识符，以及字符和字符串的内容之外，程序中的所有输入元素都只是用ASCII字符[以及产生ASCII字符的Unicode转义符号]构成的">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://lostplesed.github.io/images/java.png">
-<meta property="og:updated_time" content="2020-02-17T02:19:03.466Z">
+<meta property="og:updated_time" content="2020-02-19T03:33:11.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java学习笔记">
 <meta name="twitter:description" content="词法结构java程序是用Unicode字符集编写的，java编程语言使用UTF-16编码来表示16位代码单元系列中的文本，少数API（主要在Character类中）使用32位整数将码点表示成独立的实体。java平台提供了用于在两种表示之间进行转换的方法。除了注释，标识符，以及字符和字符串的内容之外，程序中的所有输入元素都只是用ASCII字符[以及产生ASCII字符的Unicode转义符号]构成的">
@@ -166,7 +166,50 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LearnJava.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LearnJava</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String hello = <span class="string">"Hello"</span>, lo = <span class="string">"lo"</span>;</span><br><span class="line">        System.out.println(hello == <span class="string">"Hello"</span>);</span><br><span class="line">        System.out.println(Other.hello == hello);</span><br><span class="line">        System.out.println(other.Other.hello == hello);</span><br><span class="line">        System.out.println(hello == (<span class="string">"Hel"</span> + <span class="string">"lo"</span>));</span><br><span class="line">        System.out.println(hello == (<span class="string">"Hel"</span> + lo));</span><br><span class="line">        System.out.println(hello == (<span class="string">"Hel"</span> + lo).intern());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Other</span> </span>&#123; <span class="keyword">static</span> String hello = <span class="string">"Hello"</span>; &#125;</span><br><span class="line"><span class="comment">// Other.java</span></span><br><span class="line"><span class="keyword">package</span> other;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Other</span> </span>&#123; <span class="keyword">public</span> <span class="keyword">static</span> String hello = <span class="string">"Hello"</span>; &#125;</span><br></pre></td></tr></table></figure>
 <p>输出</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">true</span><br><span class="line">true</span><br><span class="line">true</span><br><span class="line">true</span><br><span class="line">false</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-<h1 id="类型，值和变量"><a href="#类型，值和变量" class="headerlink" title="类型，值和变量"></a>类型，值和变量</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<h1 id="类型，值和变量"><a href="#类型，值和变量" class="headerlink" title="类型，值和变量"></a>类型，值和变量</h1><p>java编程语言的类型分两类：基本类型和引用类型。基本类型有布尔型和整数型。数值型有整型byte，short，int，long和char，以及浮点型float和double。引用类型有类类型，接口类型和数组类型。还有一个特殊的空类型。对象是动态创建的类类型的实例或者动态创建的数组。引用类型的值是对对象的引用。所有对象（包括数组）都支持Object类的方法。字符串值通过String对象表示。</p>
+<p>整型有byte，short，int和long，它们的值分别是8位，16位，32位和64位带符号2的补码的整数，整型还包括char，它的值是16位无符号整数，表示UTF-16代码单元。浮点型有float，它的值包括32位IEEE 754浮点数，还有double，它的值包括64位IEEE 754浮点数。boolean类型正好有两个值：true和false。</p>
+<p>Object的成员如下：</p>
+<ul>
+<li>方法getClass返回Class对象</li>
+<li>方法toString返回对象的String表示</li>
+<li>方法equals和hashCode在诸如java.util.Hashtable之类的散列表中非常有用。方法equals定义了对象相等性的概念，它基于值（而不是引用）比较。</li>
+<li>方法clone用于制作对象的副本。</li>
+<li>方法wait，notify和notifyAll用于使用线程的并发编程。</li>
+<li>方法finalize用于某个对象刚好要被销毁之前调用</li>
+</ul>
+<p>变量的初始值：</p>
+<ul>
+<li>每个类变量，实例变量或数组元素都会在创建时用默认值对其进行初始化。</li>
+<li>类型byte，short，int，long，float，double默认0</li>
+<li>类型char，默认值是空字符’\u0000’</li>
+<li>类型boolean，默认值是false</li>
+<li>所有引用类型，默认值是null</li>
+</ul>
+<h1 id="转换和提升"><a href="#转换和提升" class="headerlink" title="转换和提升"></a>转换和提升</h1><h2 id="装箱"><a href="#装箱" class="headerlink" title="装箱"></a>装箱</h2><p>装箱转换把基本类型的值转换成相应的引用类型的值。</p>
+<ul>
+<li>boolean p到Boolean r，满足r.booleanValue() == p</li>
+<li>byte p到Byte r，满足r.byteValue() == p</li>
+<li>char p到Character r，满足r.charValue() == p</li>
+<li>short p到Short r，满足r.shortValue() == p</li>
+<li>int p到Integer r，满足r.intValue() == p</li>
+<li>long p到Long r，满足r.longValue() == p</li>
+<li>float p到Float r，如果p不是NaN，那么r.floatValue() == p，否则r.isNaN() == true</li>
+<li>double p到Double r，满足p不是NaN，那么r.doubleValue() == p，否则r.isNaN() == true</li>
+</ul>
+<p>如果被装箱的p值是true，false，一个byte，一个在\u0000~\u007f之间的char，或者一个在-128~127之间的int或short数字，设r1和r2是p的任何两个装箱转换的结果，则始终有r1 == r2。如果某一包装器（Boolean，Byte，Character，Short，Integer，Long，Float或Double）的新实例需要被分配并且可用内存不足，那么装箱转换可能导致一个OutOfMemoryError。</p>
+<h2 id="拆箱"><a href="#拆箱" class="headerlink" title="拆箱"></a>拆箱</h2><p>拆箱转换把引用类型的值转换成相应的基本类型的值。</p>
+<ul>
+<li>Boolean r转换成r.booleanValue()</li>
+<li>Byte r转换成r.byteValue()</li>
+<li>Character r转换成r.charValue()</li>
+<li>Short r转换成r.shortValue()</li>
+<li>Integer r转换成r.intValue()</li>
+<li>Long r转换成r.longValue()</li>
+<li>Float r转换成r.floatValue()</li>
+<li>Double r转换成r.doubleValue()</li>
+<li>如果r是null，那么拆箱转换将抛出一个NullPointerException</li>
+</ul>
+<h1 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
 <li>java编程规范（第三版）</li>
 </ol>
 
@@ -176,7 +219,7 @@
 
 
 
-    <a data-url="http://lostplesed.github.io/2020/02/13/java学习笔记/" data-id="ck6ptygyu00055poghqeux9cf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2020/02/13/java学习笔记/" data-id="ck6srim7f000570ogmw5znhlk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -252,11 +295,11 @@
         "genre": "Program",
         "datePublished": "2020-02-13",
         "dateCreated": "2020-02-13",
-        "dateModified": "2020-02-17",
+        "dateModified": "2020-02-19",
         "url": "http://lostplesed.github.io/2020/02/13/java学习笔记/",
         "description": "
 词法结构java程序是用Unicode字符集编写的，java编程语言使用UTF-16编码来表示16位代码单元系列中的文本，少数API（主要在Character类中）使用32位整数将码点表示成独立的实体。java平台提供了用于在两种表示之间进行转换的方法。除了注释，标识符，以及字符和字符串的内容之外，程序中的所有输入元素都只是用ASCII字符[以及产生ASCII字符的Unicode转义符号]构成的"
-        "wordCount": 586
+        "wordCount": 650
     }
 </script>
 

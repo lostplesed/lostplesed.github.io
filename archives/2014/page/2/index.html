@@ -117,17 +117,17 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2014/11/27/一个没有正确初始化引发的bug/" class="thumbnail">
+        <a href="/2014/11/27/《塞尔达：梅祖拉的假面》追逐时间的游戏/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/images/3.jpg)" alt="《塞尔达：梅祖拉的假面》追逐时间的游戏" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span><a href="http://lostplesed.github.io/2014/11/27/一个没有正确初始化引发的bug/#isso-thread"></a></span>
+        <span><a href="http://lostplesed.github.io/2014/11/27/《塞尔达：梅祖拉的假面》追逐时间的游戏/#isso-thread"></a></span>
     
 </span>
 
@@ -138,20 +138,21 @@
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Program/">Program</a>
+            <a class="article-category-link" href="/categories/Game/">Game</a>
             </div>
             <div class="date"><time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2014/11/27/一个没有正确初始化引发的bug/">一个没有正确初始化引发的bug</a>
+        <a href="/2014/11/27/《塞尔达：梅祖拉的假面》追逐时间的游戏/">《塞尔达：梅祖拉的假面》追逐时间的游戏</a>
         </h1>
     
 
         <p class="article-excerpt">
-            现象
-最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的
+            
+CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，因为在一个既定的事件结果下，如果在事件的起点和过程更改其它因素，则事件的结果可能千差万别。这种可以推理和想象的万千可能，就是人类至始至终期望能通过自己的双手改变既定结果的动力。
+这么说可能抽象了点，举个简单的游戏来作例子吧。MD的《梦幻之星3—时之继承者》，RPG史上较早采用多剧情多结局的游戏（无法验证是否最早）。即玩家在游戏中
         </p>
     </div>
 </article>
@@ -219,17 +220,17 @@
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2014/11/27/autorelease到底auto在哪里/" class="thumbnail">
+        <a href="/2014/11/27/关于缓存和优化/" class="thumbnail">
     
     
-        <span style="background-image:url(/images/ios.png)" alt="autorelease到底auto在哪里" class="thumbnail-image"></span>
+        <span style="background-image:url(/images/17.jpg)" alt="关于缓存和优化" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span><a href="http://lostplesed.github.io/2014/11/27/autorelease到底auto在哪里/#isso-thread"></a></span>
+        <span><a href="http://lostplesed.github.io/2014/11/27/关于缓存和优化/#isso-thread"></a></span>
     
 </span>
 
@@ -247,14 +248,14 @@
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2014/11/27/autorelease到底auto在哪里/">autorelease到底auto在哪里</a>
+        <a href="/2014/11/27/关于缓存和优化/">关于缓存和优化</a>
         </h1>
     
 
         <p class="article-excerpt">
-            
-Retain &amp; Release在Objective-C中，每一个对象都有一个引用计数值(reference count)。对于新创建的对象其初始值为1，向一个对象发送retain消息会让它的引用计数加1；而向其发送release消息则会对让引用计数减1。如果引用计数爲1時被release，则这个对象会被发送一个dealloc消息进行销毁, 所以也不會存在计数为0的对象。
-所以一般在Ob
+            缓存
+现代处理器在读/写内存时是十分缓慢的，通常需要几千个处理器周期才能完成。和CPU里的寄存器相比，存取寄存器只需要十几个周期，甚至有时只需要一个周期。为了降低读/写主内存的平均时间，现代处理器会采用高速的内存缓存(cache)。
+缓存是一种特殊的内存，当CPU首次读取某内存区域的内容时，该内存小块会载入高速缓存。这个内存块单位称为缓存线(cache line)，缓存线通常在8至512字节，具体
         </p>
     </div>
 </article>
