@@ -40,7 +40,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -52,6 +52,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -80,8 +81,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -90,7 +91,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -100,6 +135,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -551,14 +587,6 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -569,6 +597,14 @@
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -743,18 +779,6 @@
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -777,7 +801,9 @@
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -789,7 +815,8 @@
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -828,6 +855,10 @@
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -835,6 +866,5 @@
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

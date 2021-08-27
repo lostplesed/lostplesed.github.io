@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="optimize" />
+    <meta name="keywords" content="optimize" />
     
     <meta name="description" content="现象 最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的">
 <meta property="og:type" content="article">
@@ -47,7 +47,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -59,6 +59,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -87,8 +88,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -97,7 +98,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -107,6 +142,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -135,13 +171,23 @@
         
             <div class="article-meta">
                 
-    <div class="article-date">
-        <a href="/2014/11/27/%E4%B8%80%E4%B8%AA%E6%B2%A1%E6%9C%89%E6%AD%A3%E7%A1%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BC%95%E5%8F%91%E7%9A%84bug/" class="article-date">
-            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
-        </a>
-    </div>
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/11/27/%E4%B8%80%E4%B8%AA%E6%B2%A1%E6%9C%89%E6%AD%A3%E7%A1%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BC%95%E5%8F%91%E7%9A%84bug/" class="article-date">
+       <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+    </a>
+  </div>
 
-		
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2014/11/27/%E4%B8%80%E4%B8%AA%E6%B2%A1%E6%9C%89%E6%AD%A3%E7%A1%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BC%95%E5%8F%91%E7%9A%84bug/" class="article-date">
+     <time datetime="2021-08-27T02:10:05.487Z" itemprop="dateModified">2021-08-27</time>
+  </a>
+</div>
+
+
+                
 
                 
     <div class="article-tag">
@@ -149,10 +195,20 @@
         <a class="tag-link-link" href="/tags/optimize/" rel="tag">optimize</a>
     </div>
 
+                
+
+                
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><hr>
 <p>最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的程序充满了不可知的crash，随便点点就会crash。难道刚刚看到的都是幻象，于是我又连上了IDE启动了程序，想查查到底是为什么会随机的crash，诡异的事情发生了，在你连接上IDE后，crash再也无法重现了，我第一个想到的是传说中的海森堡Bug：</p>
 <pre><code>海森堡Bug有这样一种特性：当你试图跟踪它时，它会突然消失或改变行为。它取自德国物理学家海森堡的不确定性原理（中学课本中可能称作“测不准原理”），其描述和解释的是量子物理中无法同时准确获知某一粒子位置和速度的现象。与其相关的还有一个现 象，被称为观察者效应，即观察某一对象时，无法绝对地做到仅仅观测而不改变该对象，而由观察者效应产生的问题，我们就称之为海森堡Bug。
@@ -234,7 +290,7 @@ Clearly, it behooves every programmer to be capable of debugging prob- lems in a
 
 
 
-    <a data-url="http://lostplesed.github.io/2014/11/27/%E4%B8%80%E4%B8%AA%E6%B2%A1%E6%9C%89%E6%AD%A3%E7%A1%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BC%95%E5%8F%91%E7%9A%84bug/" data-id="ckstschw4000jd8ck9g3h0ool" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2014/11/27/%E4%B8%80%E4%B8%AA%E6%B2%A1%E6%9C%89%E6%AD%A3%E7%A1%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BC%95%E5%8F%91%E7%9A%84bug/" data-id="cksttd3u7000jx9ck4flwegfb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -313,7 +369,7 @@ Clearly, it behooves every programmer to be capable of debugging prob- lems in a
         "dateModified": "2021-08-27",
         "url": "http://lostplesed.github.io/2014/11/27/一个没有正确初始化引发的bug/",
         "description": "现象
-最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的"
+最近在使用cocos2dx2.2.2的wp8实现移植一个公司的项目，在经过一系列配置和调试后游戏已经可以以debug模式在真机上运行，当然debug是很慢的如果要给人演示必须打一个release的版本。于是又经过一系列配置后使用vs2012成功的在真机上跑起了程序，四处点击了下功能都很正常，也许有些细微的bug但是不影响整体表现。我兴高采烈的准备拿给别人看时悲剧发生了，在离开了IDE启动后的",
         "wordCount": 657
     }
 </script>
@@ -336,14 +392,6 @@ Clearly, it behooves every programmer to be capable of debugging prob- lems in a
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -354,6 +402,14 @@ Clearly, it behooves every programmer to be capable of debugging prob- lems in a
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -551,18 +607,6 @@ Clearly, it behooves every programmer to be capable of debugging prob- lems in a
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -585,7 +629,9 @@ Clearly, it behooves every programmer to be capable of debugging prob- lems in a
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -597,7 +643,8 @@ Clearly, it behooves every programmer to be capable of debugging prob- lems in a
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -636,6 +683,10 @@ Clearly, it behooves every programmer to be capable of debugging prob- lems in a
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -643,6 +694,5 @@ Clearly, it behooves every programmer to be capable of debugging prob- lems in a
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

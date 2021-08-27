@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="clanned" />
+    <meta name="keywords" content="clanned" />
     
     <meta name="description" content="和你说个以前的故事吧 曾在这个小镇的 一个糟糕的摇滚少年的故事 他从小就是个为所欲为的家伙 因为没人管教 所以干了不少坏事 那时候恰好是乐队大浪潮 于是他也拿上吉他 闯入别人的演唱会 把主唱的麦克风抢过来 做尽了这种疯狂的事情  三年级的时候 迎来了一次邂逅 她称赞了他的情歌 那些令人害羞的歌词 她却会认真地去体会 结果 沉迷于对话 连自己还要赶去别的教室的事都忘记了 真是个冒失的人 他打算毕业">
 <meta property="og:type" content="article">
@@ -49,7 +49,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -61,6 +61,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -89,8 +90,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -99,7 +100,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -109,6 +144,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -137,13 +173,23 @@
         
             <div class="article-meta">
                 
-    <div class="article-date">
-        <a href="/2014/11/27/%E6%91%87%E6%BB%9A%E5%B0%91%E5%B9%B4/" class="article-date">
-            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
-        </a>
-    </div>
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/11/27/%E6%91%87%E6%BB%9A%E5%B0%91%E5%B9%B4/" class="article-date">
+       <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+    </a>
+  </div>
 
-		
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2014/11/27/%E6%91%87%E6%BB%9A%E5%B0%91%E5%B9%B4/" class="article-date">
+     <time datetime="2021-08-27T02:10:05.488Z" itemprop="dateModified">2021-08-27</time>
+  </a>
+</div>
+
+
+                
 
                 
     <div class="article-tag">
@@ -151,10 +197,20 @@
         <a class="tag-link-link" href="/tags/clanned/" rel="tag">clanned</a>
     </div>
 
+                
+
+                
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <p><img src="/images/5.jpg"></p>
 <p>和你说个以前的故事吧</p>
 <p>曾在这个小镇的 一个糟糕的摇滚少年的故事</p>
@@ -259,7 +315,7 @@
 
 
 
-    <a data-url="http://lostplesed.github.io/2014/11/27/%E6%91%87%E6%BB%9A%E5%B0%91%E5%B9%B4/" data-id="ckstschwc0018d8ckd3ozgadf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2014/11/27/%E6%91%87%E6%BB%9A%E5%B0%91%E5%B9%B4/" data-id="cksttd3uf0018x9ckdgeualug" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -354,7 +410,7 @@
 结果 沉迷于对话
 连自己还要赶去别的教室的事都忘记了
 真是个冒失的人
-他打算毕业"
+他打算毕业",
         "wordCount": 35
     }
 </script>
@@ -377,14 +433,6 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -395,6 +443,14 @@
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -592,18 +648,6 @@
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -626,7 +670,9 @@
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -638,7 +684,8 @@
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -677,6 +724,10 @@
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -684,6 +735,5 @@
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="optimize" />
+    <meta name="keywords" content="optimize" />
     
     <meta name="description" content="原文地址：http:&#x2F;&#x2F;blogs.valvesoftware.com&#x2F;abrash&#x2F;do-what-you-love&#x2F; A good third of the mountain of mail I’ve gotten since my first post has been of the general form: “What should I study in college&#x2F;learn to">
 <meta property="og:type" content="article">
@@ -47,7 +47,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -59,6 +59,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -87,8 +88,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -97,7 +98,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -107,6 +142,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -135,13 +171,23 @@
         
             <div class="article-meta">
                 
-    <div class="article-date">
-        <a href="/2014/11/27/Do%20What%20You%20Love/" class="article-date">
-            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
-        </a>
-    </div>
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/11/27/Do%20What%20You%20Love/" class="article-date">
+       <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+    </a>
+  </div>
 
-		
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2014/11/27/Do%20What%20You%20Love/" class="article-date">
+     <time datetime="2021-08-27T02:10:05.485Z" itemprop="dateModified">2021-08-27</time>
+  </a>
+</div>
+
+
+                
 
                 
     <div class="article-tag">
@@ -149,10 +195,20 @@
         <a class="tag-link-link" href="/tags/optimize/" rel="tag">optimize</a>
     </div>
 
+                
+
+                
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <p>原文地址：<a target="_blank" rel="noopener" href="http://blogs.valvesoftware.com/abrash/do-what-you-love/">http://blogs.valvesoftware.com/abrash/do-what-you-love/</a></p>
 <p>A good third of the mountain of mail I’ve gotten since my first post has been of the general form:</p>
 <p>“What should I study in college/learn to do/work at to get hired at Valve/have a good career/have a good life?”</p>
@@ -184,7 +240,7 @@
 
 
 
-    <a data-url="http://lostplesed.github.io/2014/11/27/Do%20What%20You%20Love/" data-id="ckstschvq0001d8ck2g572umk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2014/11/27/Do%20What%20You%20Love/" data-id="cksttd3tu0001x9ckevs87jo7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -264,7 +320,7 @@
         "url": "http://lostplesed.github.io/2014/11/27/Do What You Love/",
         "description": "原文地址：http://blogs.valvesoftware.com/abrash/do-what-you-love/
 A good third of the mountain of mail I’ve gotten since my first post has been of the general form:
-“What should I study in college/learn to"
+“What should I study in college/learn to",
         "wordCount": 2134
     }
 </script>
@@ -287,14 +343,6 @@ A good third of the mountain of mail I’ve gotten since my first post has been 
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -305,6 +353,14 @@ A good third of the mountain of mail I’ve gotten since my first post has been 
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -502,18 +558,6 @@ A good third of the mountain of mail I’ve gotten since my first post has been 
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -536,7 +580,9 @@ A good third of the mountain of mail I’ve gotten since my first post has been 
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -548,7 +594,8 @@ A good third of the mountain of mail I’ve gotten since my first post has been 
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -587,6 +634,10 @@ A good third of the mountain of mail I’ve gotten since my first post has been 
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -594,6 +645,5 @@ A good third of the mountain of mail I’ve gotten since my first post has been 
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

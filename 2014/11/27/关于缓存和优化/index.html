@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="optimize" />
+    <meta name="keywords" content="optimize" />
     
     <meta name="description" content="缓存 现代处理器在读&#x2F;写内存时是十分缓慢的，通常需要几千个处理器周期才能完成。和CPU里的寄存器相比，存取寄存器只需要十几个周期，甚至有时只需要一个周期。为了降低读&#x2F;写主内存的平均时间，现代处理器会采用高速的内存缓存(cache)。 缓存是一种特殊的内存，当CPU首次读取某内存区域的内容时，该内存小块会载入高速缓存。这个内存块单位称为缓存线(cache line)，缓存线通常在8至512字节，具体">
 <meta property="og:type" content="article">
@@ -49,7 +49,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -61,6 +61,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -89,8 +90,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -99,7 +100,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -109,6 +144,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -137,13 +173,23 @@
         
             <div class="article-meta">
                 
-    <div class="article-date">
-        <a href="/2014/11/27/%E5%85%B3%E4%BA%8E%E7%BC%93%E5%AD%98%E5%92%8C%E4%BC%98%E5%8C%96/" class="article-date">
-            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
-        </a>
-    </div>
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/11/27/%E5%85%B3%E4%BA%8E%E7%BC%93%E5%AD%98%E5%92%8C%E4%BC%98%E5%8C%96/" class="article-date">
+       <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+    </a>
+  </div>
 
-		
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2014/11/27/%E5%85%B3%E4%BA%8E%E7%BC%93%E5%AD%98%E5%92%8C%E4%BC%98%E5%8C%96/" class="article-date">
+     <time datetime="2021-08-27T02:10:05.487Z" itemprop="dateModified">2021-08-27</time>
+  </a>
+</div>
+
+
+                
 
                 
     <div class="article-tag">
@@ -151,10 +197,20 @@
         <a class="tag-link-link" href="/tags/optimize/" rel="tag">optimize</a>
     </div>
 
+                
+
+                
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><hr>
 <p>现代处理器在读/写内存时是十分缓慢的，通常需要几千个处理器周期才能完成。和CPU里的寄存器相比，存取寄存器只需要十几个周期，甚至有时只需要一个周期。为了降低读/写主内存的平均时间，现代处理器会采用高速的内存<strong>缓存</strong>(cache)。</p>
 <p>缓存是一种特殊的内存，当CPU首次读取某内存区域的内容时，该内存小块会载入高速缓存。这个内存块单位称为<strong>缓存线</strong>(cache line)，缓存线通常在8至512字节，具体视CPU架构而定。以后CPU再次读取数据，该数据已在缓存中，那么数据就可以直接从缓存加载到CPU，这个过程比直接从内存中读取快很多。如果要求的数据不在缓存中，才必须读取主内存。这种情况叫做<strong>缓存命中失败</strong>(cache miss)。我们基本很难避免不出现miss，但是通过最优的方式安排内存中的数据和操作数据的算法代码，就可以减少miss的次数。</p>
@@ -206,7 +262,7 @@ machdep.cpu.cache.size: 256
 
 
 
-    <a data-url="http://lostplesed.github.io/2014/11/27/%E5%85%B3%E4%BA%8E%E7%BC%93%E5%AD%98%E5%92%8C%E4%BC%98%E5%8C%96/" data-id="ckstschw7000ud8ckci216ui1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2014/11/27/%E5%85%B3%E4%BA%8E%E7%BC%93%E5%AD%98%E5%92%8C%E4%BC%98%E5%8C%96/" data-id="cksttd3ub000ux9ck8sxwe07d" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -286,7 +342,7 @@ machdep.cpu.cache.size: 256
         "url": "http://lostplesed.github.io/2014/11/27/关于缓存和优化/",
         "description": "缓存
 现代处理器在读/写内存时是十分缓慢的，通常需要几千个处理器周期才能完成。和CPU里的寄存器相比，存取寄存器只需要十几个周期，甚至有时只需要一个周期。为了降低读/写主内存的平均时间，现代处理器会采用高速的内存缓存(cache)。
-缓存是一种特殊的内存，当CPU首次读取某内存区域的内容时，该内存小块会载入高速缓存。这个内存块单位称为缓存线(cache line)，缓存线通常在8至512字节，具体"
+缓存是一种特殊的内存，当CPU首次读取某内存区域的内容时，该内存小块会载入高速缓存。这个内存块单位称为缓存线(cache line)，缓存线通常在8至512字节，具体",
         "wordCount": 71
     }
 </script>
@@ -309,14 +365,6 @@ machdep.cpu.cache.size: 256
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -327,6 +375,14 @@ machdep.cpu.cache.size: 256
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -524,18 +580,6 @@ machdep.cpu.cache.size: 256
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -558,7 +602,9 @@ machdep.cpu.cache.size: 256
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -570,7 +616,8 @@ machdep.cpu.cache.size: 256
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -609,6 +656,10 @@ machdep.cpu.cache.size: 256
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -616,6 +667,5 @@ machdep.cpu.cache.size: 256
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

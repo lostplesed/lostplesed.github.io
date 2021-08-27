@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="physical" />
+    <meta name="keywords" content="physical" />
     
     <meta name="description" content="感谢大家。能够得到“皇帝光屁股奖”对我来说是极大的荣誉。这次获奖实在令我很意外，也让我觉得有些尴尬，因为我查询了历届获奖者名单，发现其中有很多人都切实地做出了改善世界的了不起事迹，在公共领域捍卫世俗主义。我是一名理论物理学家，我喜欢想事情而不是做事情（笑声）。所以我想我的获奖感言应该说什么呢？然后我想起来万圣节马上就要到了。吊诡的是，万圣节是自然主义者与无神论者群体最喜欢的节日。所以我挑选死亡作">
 <meta property="og:type" content="article">
@@ -49,7 +49,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -61,6 +61,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -89,8 +90,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -99,7 +100,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -109,6 +144,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -137,13 +173,23 @@
         
             <div class="article-meta">
                 
-    <div class="article-date">
-        <a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="article-date">
-            <time datetime="2016-09-02T16:00:00.000Z" itemprop="datePublished">2016-09-03</time>
-        </a>
-    </div>
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="article-date">
+       <time datetime="2016-09-02T16:00:00.000Z" itemprop="datePublished">2016-09-03</time>
+    </a>
+  </div>
 
-		
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="article-date">
+     <time datetime="2021-08-27T02:10:05.486Z" itemprop="dateModified">2021-08-27</time>
+  </a>
+</div>
+
+
+                
 
                 
     <div class="article-tag">
@@ -151,10 +197,20 @@
         <a class="tag-link-link" href="/tags/physical/" rel="tag">physical</a>
     </div>
 
+                
+
+                
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <p><img src="/images/SeanCarroll.jpg"></p>
 <p>感谢大家。能够得到“皇帝光屁股奖”对我来说是极大的荣誉。这次获奖实在令我很意外，也让我觉得有些尴尬，因为我查询了历届获奖者名单，发现其中有很多人都切实地做出了改善世界的了不起事迹，在公共领域捍卫世俗主义。我是一名理论物理学家，我喜欢想事情而不是做事情（笑声）。所以我想我的获奖感言应该说什么呢？然后我想起来万圣节马上就要到了。吊诡的是，万圣节是自然主义者与无神论者群体最喜欢的节日。所以我挑选死亡作为这次演讲的主题。你们可能注意到了，我并不是研究死亡的专家，更不用说研究世俗主义的专家了，而且死亡还是个多少有些禁忌的话题。因此我决定降低一下难度，将这个话题引入我自己的研究领域，也顺便谈一下物理，因为物理总能让大家感到内心温暖（笑声）。</p>
 <p>你可能会问，一名物理学家对死亡有哪些了解呢？我的工作与死亡有什么关系呢？几个月之前，我在纽约参加了一场辩论。我与Steven Novella一队，我们的论敌是Eben Alexander与Raymond Moody。我们的论题是“死亡并非最终结局”。Eben Alexander是一名神经医生，也是《纽约时代》榜上有名的畅销书作家。有一次他因为脑膜炎而陷入昏迷并且造访了天堂。我们知道这段经历是真实的，因为他亲口这样说，而且他的态度很诚恳（笑声）。Steven Novella与我尽我们所能地提供了科学证据。好消息是我们赢了这次辩论（掌声）。辩论举办方在辩论之前与之后进行了民意调查，调查结果表明同意我方论点的人数在辩论之后的确增加了，可见人的思想是可以通过理性讨论加以改变的。不过大家可以看到还是有将近半数的人相信死亡并不是最终结局。这个理念确实很有说服力。</p>
@@ -182,7 +238,7 @@
 
 
 
-    <a data-url="http://lostplesed.github.io/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" data-id="ckstschwl002ad8ckfafz613o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" data-id="cksttd3uq002dx9ck8rht9gti" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -261,7 +317,7 @@
         "dateModified": "2021-08-27",
         "url": "http://lostplesed.github.io/2016/09/03/SeanCaroll：一名物理学家的生死观/",
         "description": "
-感谢大家。能够得到“皇帝光屁股奖”对我来说是极大的荣誉。这次获奖实在令我很意外，也让我觉得有些尴尬，因为我查询了历届获奖者名单，发现其中有很多人都切实地做出了改善世界的了不起事迹，在公共领域捍卫世俗主义。我是一名理论物理学家，我喜欢想事情而不是做事情（笑声）。所以我想我的获奖感言应该说什么呢？然后我想起来万圣节马上就要到了。吊诡的是，万圣节是自然主义者与无神论者群体最喜欢的节日。所以我挑选死亡作"
+感谢大家。能够得到“皇帝光屁股奖”对我来说是极大的荣誉。这次获奖实在令我很意外，也让我觉得有些尴尬，因为我查询了历届获奖者名单，发现其中有很多人都切实地做出了改善世界的了不起事迹，在公共领域捍卫世俗主义。我是一名理论物理学家，我喜欢想事情而不是做事情（笑声）。所以我想我的获奖感言应该说什么呢？然后我想起来万圣节马上就要到了。吊诡的是，万圣节是自然主义者与无神论者群体最喜欢的节日。所以我挑选死亡作",
         "wordCount": 13
     }
 </script>
@@ -284,14 +340,6 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -302,6 +350,14 @@
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -499,18 +555,6 @@
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -533,7 +577,9 @@
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -545,7 +591,8 @@
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -584,6 +631,10 @@
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -591,6 +642,5 @@
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

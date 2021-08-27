@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="the legend of zelda" />
+    <meta name="keywords" content="the legend of zelda" />
     
     <meta name="description" content="CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，因为在一个既定的事件结果下，如果在事件的起点和过程更改其它因素，则事件的结果可能千差万别。这种可以推理和想象的万千可能，就是人类至始至终期望能通过自己的双手改变既定结果的动力。 这么说可能抽象了点，举个简单的游戏来作例子吧。MD的《梦幻之星3—时之继承者》，RPG史上较早采用多剧情多结局的游戏（无法验证是否最早）。即玩家在游戏中">
 <meta property="og:type" content="article">
@@ -49,7 +49,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -61,6 +61,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -89,8 +90,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -99,7 +100,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -109,6 +144,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -137,13 +173,23 @@
         
             <div class="article-meta">
                 
-    <div class="article-date">
-        <a href="/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%A2%85%E7%A5%96%E6%8B%89%E7%9A%84%E5%81%87%E9%9D%A2%E3%80%8B%E8%BF%BD%E9%80%90%E6%97%B6%E9%97%B4%E7%9A%84%E6%B8%B8%E6%88%8F/" class="article-date">
-            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
-        </a>
-    </div>
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%A2%85%E7%A5%96%E6%8B%89%E7%9A%84%E5%81%87%E9%9D%A2%E3%80%8B%E8%BF%BD%E9%80%90%E6%97%B6%E9%97%B4%E7%9A%84%E6%B8%B8%E6%88%8F/" class="article-date">
+       <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+    </a>
+  </div>
 
-		
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%A2%85%E7%A5%96%E6%8B%89%E7%9A%84%E5%81%87%E9%9D%A2%E3%80%8B%E8%BF%BD%E9%80%90%E6%97%B6%E9%97%B4%E7%9A%84%E6%B8%B8%E6%88%8F/" class="article-date">
+     <time datetime="2021-08-27T02:10:05.487Z" itemprop="dateModified">2021-08-27</time>
+  </a>
+</div>
+
+
+                
 
                 
     <div class="article-tag">
@@ -151,10 +197,20 @@
         <a class="tag-link-link" href="/tags/the-legend-of-zelda/" rel="tag">the legend of zelda</a>
     </div>
 
+                
+
+                
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <p><img src="/images/3.jpg"></p>
 <h3 id="CHAPTER-1-时间的游戏"><a href="#CHAPTER-1-时间的游戏" class="headerlink" title="CHAPTER 1. 时间的游戏"></a>CHAPTER 1. 时间的游戏</h3><p>人类从未停止过改变时间和空间的梦想，因为在一个既定的事件结果下，如果在事件的起点和过程更改其它因素，则事件的结果可能千差万别。这种可以推理和想象的万千可能，就是人类至始至终期望能通过自己的双手改变既定结果的动力。</p>
 <p>这么说可能抽象了点，举个简单的游戏来作例子吧。MD的《梦幻之星3—时之继承者》，RPG史上较早采用多剧情多结局的游戏（无法验证是否最早）。即玩家在游戏中同一个时间段做不同的事情，那么游戏的结局也就截然不同（实为选择结婚的对象不同导致游戏的结局分支为4种）。如果玩家只是看到一种结局，那么对另外的几个结局自然也是神往，无形之中重复游戏的可能性就大大增加了。游戏史上以时间轴作为卖点和亮点的游戏很多，其中也不乏许多超级大作，如SFC号称“史上最强RPG”的《穿越时空》（Chrono Trigger），在过去、现在和未来间穿梭追寻外星“祸害”旅客之《幻想传说》（Tales of Phantasia） ，还有在7年光阴间于自己的少年和青年形态相互作用相互影响的《塞尔达传说~时之笛》（Legend of ZELDA:Orcarina of Time）……</p>
@@ -188,7 +244,7 @@
 
 
 
-    <a data-url="http://lostplesed.github.io/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%A2%85%E7%A5%96%E6%8B%89%E7%9A%84%E5%81%87%E9%9D%A2%E3%80%8B%E8%BF%BD%E9%80%90%E6%97%B6%E9%97%B4%E7%9A%84%E6%B8%B8%E6%88%8F/" data-id="ckstschw0000bd8ck1o52712b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%A2%85%E7%A5%96%E6%8B%89%E7%9A%84%E5%81%87%E9%9D%A2%E3%80%8B%E8%BF%BD%E9%80%90%E6%97%B6%E9%97%B4%E7%9A%84%E6%B8%B8%E6%88%8F/" data-id="cksttd3u4000bx9ckcevbc39u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -268,7 +324,7 @@
         "url": "http://lostplesed.github.io/2014/11/27/《塞尔达：梅祖拉的假面》追逐时间的游戏/",
         "description": "
 CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，因为在一个既定的事件结果下，如果在事件的起点和过程更改其它因素，则事件的结果可能千差万别。这种可以推理和想象的万千可能，就是人类至始至终期望能通过自己的双手改变既定结果的动力。
-这么说可能抽象了点，举个简单的游戏来作例子吧。MD的《梦幻之星3—时之继承者》，RPG史上较早采用多剧情多结局的游戏（无法验证是否最早）。即玩家在游戏中"
+这么说可能抽象了点，举个简单的游戏来作例子吧。MD的《梦幻之星3—时之继承者》，RPG史上较早采用多剧情多结局的游戏（无法验证是否最早）。即玩家在游戏中",
         "wordCount": 50
     }
 </script>
@@ -291,14 +347,6 @@ CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -309,6 +357,14 @@ CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -506,18 +562,6 @@ CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -540,7 +584,9 @@ CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -552,7 +598,8 @@ CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -591,6 +638,10 @@ CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -598,6 +649,5 @@ CHAPTER 1. 时间的游戏人类从未停止过改变时间和空间的梦想，
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

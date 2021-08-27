@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="the legend of zelda" />
+    <meta name="keywords" content="the legend of zelda" />
     
     <meta name="description" content="时之笛，就是一种“生活的感觉”，这种“生活的感觉”是神奇的。然而，对时之笛中万物的熟视无睹，犹如一层薄薄的雾，遮蔽了我们，使我们看布道这个游戏真正的神奇之处。我们对游戏中剧情的倏忽不定的变换而赞叹不已，对游戏中的一句神来之笔的对话而拍案叫绝，然而从中感受到生活的存在难道不是更伟大的奇迹吗？ 如果有一个艺术家，凭他的想象勾勒出地球上盛大的景致：山峦，海洋，河流，草木，花朵，森林中形形色色的叶子，日">
 <meta property="og:type" content="article">
@@ -49,7 +49,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -61,6 +61,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -89,8 +90,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -99,7 +100,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -109,6 +144,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -137,13 +173,23 @@
         
             <div class="article-meta">
                 
-    <div class="article-date">
-        <a href="/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%97%B6%E4%B9%8B%E7%AC%9B%E3%80%8B%E6%84%9F%E6%83%B3%EF%BC%9A%E7%A9%BA%E7%AD%90%E7%9A%84%E8%89%BA%E6%9C%AF/" class="article-date">
-            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
-        </a>
-    </div>
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%97%B6%E4%B9%8B%E7%AC%9B%E3%80%8B%E6%84%9F%E6%83%B3%EF%BC%9A%E7%A9%BA%E7%AD%90%E7%9A%84%E8%89%BA%E6%9C%AF/" class="article-date">
+       <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+    </a>
+  </div>
 
-		
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%97%B6%E4%B9%8B%E7%AC%9B%E3%80%8B%E6%84%9F%E6%83%B3%EF%BC%9A%E7%A9%BA%E7%AD%90%E7%9A%84%E8%89%BA%E6%9C%AF/" class="article-date">
+     <time datetime="2021-08-27T02:10:05.486Z" itemprop="dateModified">2021-08-27</time>
+  </a>
+</div>
+
+
+                
 
                 
     <div class="article-tag">
@@ -151,10 +197,20 @@
         <a class="tag-link-link" href="/tags/the-legend-of-zelda/" rel="tag">the legend of zelda</a>
     </div>
 
+                
+
+                
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <p><img src="/images/4.png"></p>
 <p>时之笛，就是一种“生活的感觉”，这种“生活的感觉”是神奇的。然而，对时之笛中万物的熟视无睹，犹如一层薄薄的雾，遮蔽了我们，使我们看布道这个游戏真正的神奇之处。我们对游戏中剧情的倏忽不定的变换而赞叹不已，对游戏中的一句神来之笔的对话而拍案叫绝，然而从中感受到生活的存在难道不是更伟大的奇迹吗？</p>
 <p>如果有一个艺术家，凭他的想象勾勒出地球上盛大的景致：山峦，海洋，河流，草木，花朵，森林中形形色色的叶子，日出日落时的云蒸霞蔚，浑浊清明的大气中的色彩层次，那么，毫无疑问，我们会对他赞叹不已。如果以“现实的创造者”来赞叹这位艺术家，这就不是出于虚浮的吹捧了。然而，此刻，多数玩家知识不经意地打量着这一切——日月，星辰，山川，河流，山脉……仅仅用一种快乐的意识来感觉这个被盛赞为“完美”的游戏。</p>
@@ -175,7 +231,7 @@
 
 
 
-    <a data-url="http://lostplesed.github.io/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%97%B6%E4%B9%8B%E7%AC%9B%E3%80%8B%E6%84%9F%E6%83%B3%EF%BC%9A%E7%A9%BA%E7%AD%90%E7%9A%84%E8%89%BA%E6%9C%AF/" data-id="ckstschvx0007d8ckhrdb4t1f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%97%B6%E4%B9%8B%E7%AC%9B%E3%80%8B%E6%84%9F%E6%83%B3%EF%BC%9A%E7%A9%BA%E7%AD%90%E7%9A%84%E8%89%BA%E6%9C%AF/" data-id="cksttd3u10007x9ck60mb4wra" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -255,7 +311,7 @@
         "url": "http://lostplesed.github.io/2014/11/27/《塞尔达：时之笛》感想：空筐的艺术/",
         "description": "
 时之笛，就是一种“生活的感觉”，这种“生活的感觉”是神奇的。然而，对时之笛中万物的熟视无睹，犹如一层薄薄的雾，遮蔽了我们，使我们看布道这个游戏真正的神奇之处。我们对游戏中剧情的倏忽不定的变换而赞叹不已，对游戏中的一句神来之笔的对话而拍案叫绝，然而从中感受到生活的存在难道不是更伟大的奇迹吗？
-如果有一个艺术家，凭他的想象勾勒出地球上盛大的景致：山峦，海洋，河流，草木，花朵，森林中形形色色的叶子，日"
+如果有一个艺术家，凭他的想象勾勒出地球上盛大的景致：山峦，海洋，河流，草木，花朵，森林中形形色色的叶子，日",
         "wordCount": 4
     }
 </script>
@@ -278,14 +334,6 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -296,6 +344,14 @@
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -493,18 +549,6 @@
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -527,7 +571,9 @@
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -539,7 +585,8 @@
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -578,6 +625,10 @@
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -585,6 +636,5 @@
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

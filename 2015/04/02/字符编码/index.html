@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="characters,encoding" />
+    <meta name="keywords" content="characters,encoding" />
     
     <meta name="description" content="json decode最近项目要开始和服务器通讯了，客户端使用的是quick cocos，服务器的一些服务使用php开发。发送请求后服务器返回的是json格式的字符串，一般字符都没有问题，遇到中文后返回的是“\u90ae\u7bb1\u4e0d\u5b58\u5728”这样的字符串，客户端解析后没有把对应编码的中文显示出来，而是直接得到“u90aeu7bb1u4e0d”，显然这是不对的。 goo">
 <meta property="og:type" content="article">
@@ -50,7 +50,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -62,6 +62,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -90,8 +91,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -100,7 +101,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -110,6 +145,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -138,13 +174,23 @@
         
             <div class="article-meta">
                 
-    <div class="article-date">
-        <a href="/2015/04/02/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="article-date">
-            <time datetime="2015-04-01T16:00:00.000Z" itemprop="datePublished">2015-04-02</time>
-        </a>
-    </div>
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/04/02/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="article-date">
+       <time datetime="2015-04-01T16:00:00.000Z" itemprop="datePublished">2015-04-02</time>
+    </a>
+  </div>
 
-		
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2015/04/02/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="article-date">
+     <time datetime="2021-08-27T02:10:05.488Z" itemprop="dateModified">2021-08-27</time>
+  </a>
+</div>
+
+
+                
 
                 
     <div class="article-tag">
@@ -152,10 +198,20 @@
         <a class="tag-link-link" href="/tags/characters/" rel="tag">characters</a>, <a class="tag-link-link" href="/tags/encoding/" rel="tag">encoding</a>
     </div>
 
+                
+
+                
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <p><img src="/images/charset_encode.png"></p>
 <h1 id="json-decode"><a href="#json-decode" class="headerlink" title="json decode"></a>json decode</h1><p>最近项目要开始和服务器通讯了，客户端使用的是quick cocos，服务器的一些服务使用php开发。发送请求后服务器返回的是json格式的字符串，一般字符都没有问题，遇到中文后返回的是“\u90ae\u7bb1\u4e0d\u5b58\u5728”这样的字符串，客户端解析后没有把对应编码的中文显示出来，而是直接得到“u90aeu7bb1u4e0d”，显然这是不对的。</p>
 <p>google一下发现是解码问题，“\u90ae\u7bb1\u4e0d\u5b58\u5728”使用的是unicode符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。</p>
@@ -222,7 +278,7 @@ print(aa)
 
 
 
-    <a data-url="http://lostplesed.github.io/2015/04/02/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" data-id="ckstschwb0014d8ck5tn9hm8r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2015/04/02/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" data-id="cksttd3ue0014x9ckcgk7e04n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -302,7 +358,7 @@ print(aa)
         "url": "http://lostplesed.github.io/2015/04/02/字符编码/",
         "description": "
 json decode最近项目要开始和服务器通讯了，客户端使用的是quick cocos，服务器的一些服务使用php开发。发送请求后服务器返回的是json格式的字符串，一般字符都没有问题，遇到中文后返回的是“\u90ae\u7bb1\u4e0d\u5b58\u5728”这样的字符串，客户端解析后没有把对应编码的中文显示出来，而是直接得到“u90aeu7bb1u4e0d”，显然这是不对的。
-goo"
+goo",
         "wordCount": 162
     }
 </script>
@@ -325,14 +381,6 @@ goo"
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -343,6 +391,14 @@ goo"
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -540,18 +596,6 @@ goo"
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -574,7 +618,9 @@ goo"
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -586,7 +632,8 @@ goo"
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -625,6 +672,10 @@ goo"
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -632,6 +683,5 @@ goo"
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>

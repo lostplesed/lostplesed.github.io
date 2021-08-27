@@ -10,7 +10,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="life" />
+    <meta name="keywords" content="life" />
     
     <meta name="description" content="孩子，我希望你自始至终都是一个理想主义者。 　　你可以是农民，可以是工程师，可以是演员，可以是流浪汉，但你必须是个理想主义者。 　　童年，我们讲英雄故事给你听，并不是一定要你成为英雄，而是希望你具有纯正的品格。 　　少年，我们让你接触诗歌、绘画、音乐，是为了让你的心灵填满高尚的情趣。 　　这些高尚的情趣会支撑你的一生，使你在最严酷的冬天也不会忘记玫瑰的芳香。 　　理想会使人出众。 　　孩子，">
 <meta property="og:type" content="article">
@@ -49,7 +49,7 @@
 
 
     
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
 
     
     
@@ -61,6 +61,7 @@
         
 <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
 
+    
     
     
     
@@ -89,8 +90,8 @@
                                     <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
-                                    
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
@@ -99,7 +100,41 @@
                         <nav id="sub-nav">
                             <div id="search-form-wrap">
 
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -109,6 +144,7 @@
         </div>
     </div>
 </header>
+
         <div class="container">
             <div class="main-body container-inner">
                 <div class="main-body-inner">
@@ -137,13 +173,23 @@
         
             <div class="article-meta">
                 
-    <div class="article-date">
-        <a href="/2015/09/12/%E4%BD%99%E5%85%89%E4%B8%AD%EF%BC%9A%E5%86%99%E7%BB%99%E6%9C%AA%E6%9D%A5%E7%9A%84%E4%BD%A0/" class="article-date">
-            <time datetime="2015-09-11T16:00:00.000Z" itemprop="datePublished">2015-09-12</time>
-        </a>
-    </div>
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2015/09/12/%E4%BD%99%E5%85%89%E4%B8%AD%EF%BC%9A%E5%86%99%E7%BB%99%E6%9C%AA%E6%9D%A5%E7%9A%84%E4%BD%A0/" class="article-date">
+       <time datetime="2015-09-11T16:00:00.000Z" itemprop="datePublished">2015-09-12</time>
+    </a>
+  </div>
 
-		
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2015/09/12/%E4%BD%99%E5%85%89%E4%B8%AD%EF%BC%9A%E5%86%99%E7%BB%99%E6%9C%AA%E6%9D%A5%E7%9A%84%E4%BD%A0/" class="article-date">
+     <time datetime="2021-08-27T02:10:05.487Z" itemprop="dateModified">2021-08-27</time>
+  </a>
+</div>
+
+
+                
 
                 
     <div class="article-tag">
@@ -151,10 +197,20 @@
         <a class="tag-link-link" href="/tags/life/" rel="tag">life</a>
     </div>
 
+                
+
+                
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
             <p><img src="/images/yuguangzhong.jpg"></p>
 <p>　　孩子，我希望你自始至终都是一个理想主义者。</p>
 <p>　　你可以是农民，可以是工程师，可以是演员，可以是流浪汉，但你必须是个理想主义者。</p>
@@ -214,7 +270,7 @@
 
 
 
-    <a data-url="http://lostplesed.github.io/2015/09/12/%E4%BD%99%E5%85%89%E4%B8%AD%EF%BC%9A%E5%86%99%E7%BB%99%E6%9C%AA%E6%9D%A5%E7%9A%84%E4%BD%A0/" data-id="ckstschw6000pd8cke4op4sb8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2015/09/12/%E4%BD%99%E5%85%89%E4%B8%AD%EF%BC%9A%E5%86%99%E7%BB%99%E6%9C%AA%E6%9D%A5%E7%9A%84%E4%BD%A0/" data-id="cksttd3ua000px9ckb18k82x6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -299,7 +355,7 @@
 　　少年，我们让你接触诗歌、绘画、音乐，是为了让你的心灵填满高尚的情趣。
 　　这些高尚的情趣会支撑你的一生，使你在最严酷的冬天也不会忘记玫瑰的芳香。
 　　理想会使人出众。
-　　孩子，"
+　　孩子，",
         "wordCount": 2
     }
 </script>
@@ -322,14 +378,6 @@
             
                 
                 <li>
-                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
-                        <i class="icon fa fa-github"></i>
-                    </a>
-                </li>
-                
-            
-                
-                <li>
                     <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
@@ -340,6 +388,14 @@
                 <li>
                     <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
                         <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
                     </a>
                 </li>
                 
@@ -537,18 +593,6 @@
                         <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
                     </li>
                 
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -571,7 +615,9 @@
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2021 John Doe</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
             </div>
             <div class="footer-plugins">
               
@@ -583,7 +629,8 @@
     </div>
 </footer>
 
-        
+    </div>
+    
 
 
     
@@ -622,6 +669,10 @@
     
     
 
+    
+    
+    
+
 
 
 <!-- Custom Scripts -->
@@ -629,6 +680,5 @@
 <script src="/js/main.js"></script>
 
 
-    </div>
 </body>
 </html>
