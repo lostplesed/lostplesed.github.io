@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>静态代码分析 | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="john camack" />
+    
+    <meta name="description" content="原文链接：http:&#x2F;&#x2F;article.yeeyan.org&#x2F;view&#x2F;142563&#x2F;242891 原作者：John Camack 译者：hijackjave  近些年来，我作为一个程序员，做过的最重要的事情莫过于大胆的推崇静态代码分析了。它的意义甚至大于我以往所解决的数百个严重的bug，更颠覆了我对软件可靠性和代码质量的一贯认识。 至此首先要说的很重要一点是:  质量并不代表一切，而且去承认这一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="静态代码分析">
+<meta property="og:url" content="http://lostplesed.github.io/2014/11/27/%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="原文链接：http:&#x2F;&#x2F;article.yeeyan.org&#x2F;view&#x2F;142563&#x2F;242891 原作者：John Camack 译者：hijackjave  近些年来，我作为一个程序员，做过的最重要的事情莫过于大胆的推崇静态代码分析了。它的意义甚至大于我以往所解决的数百个严重的bug，更颠覆了我对软件可靠性和代码质量的一贯认识。 至此首先要说的很重要一点是:  质量并不代表一切，而且去承认这一">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2014-11-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-27T02:10:05.488Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="john camack">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Program/">Program</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-静态代码分析" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        静态代码分析
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2014/11/27/%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/" class="article-date">
+            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/john-camack/" rel="tag">john camack</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>原文链接：<a target="_blank" rel="noopener" href="http://article.yeeyan.org/view/142563/242891">http://article.yeeyan.org/view/142563/242891</a></p>
+<p>原作者：John Camack</p>
+<p>译者：hijackjave</p>
+<hr>
+<p>近些年来，我作为一个程序员，做过的最重要的事情莫过于大胆的推崇静态代码分析了。它的意义甚至大于我以往所解决的数百个严重的bug，更颠覆了我对软件可靠性和代码质量的一贯认识。</p>
+<p>至此首先要说的很重要一点是:  质量并不代表一切，而且去承认这一点也并不是什么不光彩的事情。质量只是你尝试产生的价值中的一方面，其中更混杂着成本，特性，和其他的东西。有足够多的事例能证明那些所谓的成功和受人尊敬的头衔背后都充斥着大量的bug和其导致的系统崩溃，对游戏开发来说追求类似航天工业般的代码开发流程是不切实际的。尽管如此，质量仍是关键。</p>
+<p>平心而论作为一个手艺人我总是希望能写出优秀的代码，并不断的去提炼它们。我在很多书中干涩的章节里，阅读到了比如“规范，标准 和 质量规划”的内容，另外在Armadillo Aerospace工作的时间里，我也接触到了不同于一般的软件开发，需要追求安全至上的开发方式.</p>
+<p>在十多年前， 开发Quake 3 期间，我买过一份PC-Lint的授权并尝试使用它 – 它能自动的发现代码里的不足之处，那听起来不错。不过，由于它只能作为命令行工具来使用，而且你还需要去过滤并处理其对代码的大量的（看来是无法停止的）指示信息，这让我很是无奈，所以我很快的抛弃了它。</p>
+<p>至那以后由于无论是在程序员数量上还是代码库的规模上都增长了一个数量级，而且实现语言又由C迁移到了C++，这些都是软件错误多发的温床。几年前，在阅读了一些关于静态代码分析的论文后，我决定去验证下在我尝试PC-Lint后的十年来，静态代码分析技术到底改变了多少。</p>
+<p>在这样的想法下，我们将代码编译选项设定在警告级别4 而且禁用很少一部分的警告提示，并将警告即错误设定成强制选项，强迫程序员们去解决这些警告。虽然有些有毛病的代码在这些年里有风吹日晒下被积累成顽疾了，不过大部分代码还是十分规范的。至此以后，我们觉得我们可能已经拥有了一个完善的代码库了。不过……</p>
+<h1 id="Coverity"><a href="#Coverity" class="headerlink" title="Coverity"></a>Coverity</h1><p>最初，我联系了Coverity 公司，注册了一个演示版本的软件。这是一个十分专业的软件，它的授权是基于代码行数的，当时我们得到的报价是5位数。当他们展示他们的分析之前，他们评价我们的代码库是他们所见过的，在这个规模大小上最干净的代码库之一（也许他们对所有他们的客户都这么拍马屁），不过他给我们看了他们定位出来的一套大约一百个问题。这个软件和PC-Lint非常不同。它对噪声有很高的区分能力 – 所有的被高亮出来的问题都是非常清晰的错误代码，而且这些代码都很可能产生严重的后果。</p>
+<p>这让我们大开眼界，不过它如此高的价格留给我们也许只是遐想的空间。或许在我们没有购买它之前，我们不应该使用他们的软件来分析我们的代码库。</p>
+<h1 id="Microsoft-analyze"><a href="#Microsoft-analyze" class="headerlink" title="Microsoft /analyze"></a>Microsoft /analyze</h1><p>我很可能最终说服自己去付钱 给Coverity，购买他们的产品, 不过当我还在纠结这个事情的时候，微软将他们的<a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/library/d3bbz7tz%28v=VS.100%29.aspx">/analyze</a> （编译选项） 分析功能整合进了XBOX 360的SDK来结束了这场争论。/analyze 之前只是贼贵版本的Visual Studio中高端功能的一部分，不过现在它对所有XBOX 360 开发者来说不用再花一分钱就可以使用了。可解读到的是：当时微软已经预见到在XBOX 360上游戏质量的好坏所带来的影响要大于在Windows上的应用程序。:-)</p>
+<p>单从技术上来说，微软的工具只执行本地分析，这点可能要低于Coverity代码库级的分析，不过打开/analyze （编译选项）带来的是排山倒海似的错误，远大于Coverity的。事实上来说，确实有很多被误报的错误，不过还是有很多可怕的错误被检查出来了。</p>
+<p>我开始慢慢的以我的方式检查这些代码，先修改我自己写的部分代码，其次是剩下的后台系统部分，最后是整个游戏的。我只能在零碎的空余时间里修改所有的东西，所以整个过程延续了大概二个月左右。路遥知马力，在这段时间里面我们也发现了很多重要的东西 - 整个过程就是一部众志成城，旷日持久的围捕那些被/analyze 标识出来但是还未被我修正的bug的史诗。还有一些不那么引入注意的代码，这些代码在调试他们的时候会直接导致已被/analyze标记过的问题。 这些才是真正最辣手的问题。</p>
+<p>最终我终于能在打开/analyze设置的时候，用编译器编译出来没有半点警告的XBOX 360可执行文件，之后我将/analyze当作XBOX 360 程序编译的时候的默认行为。因此每个程序员在每次编译XBOX 360程序时都能得到/analyze的分析结果，这样他们会注意到这些问题并立刻修正它们，而不用等到我后来再去默默的修正了。不过有些时候开启/analyze会造成编译速度下降，不过/analyze是我用过的最快的分析工具，这一点牺牲也是值得的。</p>
+<p>之后有一段时间我们的一个项目由于一些意外情况造成静态分析的选项被关闭了几个月，当我注意到并重新开启它的时候，在这段过渡期间里产生了一大堆新的错误。而同时，只工作在PC平台或者PS3平台的程序员还是会继续迁入代码而且并不会认识到这一点，直到他们收到“360版本编译失败”的邮件报告。这些就是在普通开发流程中持续产生这类错误的例子，使用/analyze选项能有效的避免我们再犯其中的很多错误。</p>
+<p>Bruce Dawson 发布很多篇博文关于使用/analysis，以下是他的博客地址：<br><a target="_blank" rel="noopener" href="http://randomascii.wordpress.com/category/code-reliability/">http://randomascii.wordpress.com/category/code-reliability/</a></p>
+<h1 id="PVS-Studio"><a href="#PVS-Studio" class="headerlink" title="PVS-Studio"></a>PVS-Studio</h1><p>由于我们只是在XBOX360的项目上使用/analyze设置，所以还有很多的代码没有被分析过 –其中包括 PC和PS3平台的特定项目代码，嗨哟偶所有只运行在PC端的工具的代码。</p>
+<p>下一个闪亮登场的工具就是<a target="_blank" rel="noopener" href="http://www.viva64.com/en/pvs-studio/">PVS-Studio</a>。它能很好的和Visual Studio整合，还有一个方便的演示模式（试一下吧）。和/analyze对比起来，PVS-Studio慢的痛苦，不过他还能额外的指出一些严重错误，甚至是在已经完全使用/analyze分析并清理过的代码上。</p>
+<p>有很多优秀的文章发表在PVS-Studio的网站上，很多示例代码来自于开源软件，他们被用来准确的告诉我们其中被发现了什么样的问题。我也曾考虑添加一些典型的问题代码分析在这些文章里，不过已经有很多很好的例子已经被写下来并呈现在其中了。我给你们的建议是：去认真看下这些文章，然后告诉自己“我再也不会写这些愚蠢的代码了”。</p>
+<h1 id="PC-Lint"><a href="#PC-Lint" class="headerlink" title="PC-Lint"></a>PC-Lint</h1><p>疏归同路，最后我还是回到了<a target="_blank" rel="noopener" href="http://www.gimpel.com/html/pcl.htm">PC-Lint</a>上来，用它和<a target="_blank" rel="noopener" href="http://www.riverblade.co.uk/products/visual_lint/index.html">Visual Lint</a>一起结合起来在IDE中使用。由于继承了悠远的UNIX传统，所以能够通过配置来做任何事情，不过它并不是很友好，而且大多数情况下并不能“简单的工作”。我曾买过5个授权包，不过实在是问题太多，我估计其他程序员仅仅试过下就会放弃掉的。不过我仅仅需要简单的配置下PC-Lint就能让它来分析所有我们PS3平台的代码，这依赖于PC-Lint高灵活性，不过估计这将是个比较乏味的工作。lol</p>
+<p>再次强调下，即使在同时经过/ analyze和PVS-Studio分析并清理过的代码里,  新的错误被发现还是具有十分重要的意义。我曾真正努力过想让我们的整个代码库通过所有代码分析, 但最后还是没有成功。后来我选择先让所有的后台系统部分的代码通过了分析,  然后再去尝试游戏部分，但当我面对所有关于游戏部分的分析报告时，我开始想退缩了。最终我只好从报告类型中先拣选出我最担心的问题，忽略大量类似关于代码风格或者是可能潜在发生的问题。</p>
+<p>想让一个庞大的代码库来通过最严格的PC-Lint分析基本是徒劳的。不过在代码库中被我规划出了很多没有任何PC-Lint 警告的“净土”，当然是在我苦逼的清除了这些区域里所有代码分析的警告之后 J， 但这些调整确实要比大多数经验丰富的C/C++程序员能想到去做的修改要多的多。不过除此之外，我仍然需要花些时间来确定一套合适的警告级别，好让所有开发人员都能从PC-Lint中获益最多。</p>
+<h1 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h1><p>详述（意在抛砖引玉，作讨论解亦可）</p>
+<p>在这个过程中我学到了很多东西。不过，有些东西我担心可能不能简单的传达出来，如果没有亲自在短时间里处理过上百个问题报告，而且也没体会到过那种对错误恶心发呕，食寝难安，百爪挠心的感觉，可能你只会反应说：“我们现在做的很好啊”或者“看起来没那么糟嘛”。</p>
+<p>第一步总是很难的，你首先要彻底的承认你的代码布满了问题。这对很多人来说是良药苦口，否则所有静态代码分析带来的建议和修改都会被当成没事找事，而且是充满怨恨的。你不得不去对你的代码做自我批判。</p>
+<p>另外一点是，自动化过程是非常必要的。不过当你看到自动化系统中出现大量的失败报告时，不要自鸣得意觉得这不是你的问题，在每条失败报告中，人为因素总是占主要的。劝告开发人员们多进行如何“写出更好的代码”的计划并安排更多的代码审阅，结对编程(译者觉得结对编程应以一开发一测试进行，测试可多享，而非二个开发，类似Ping pong pair programming，仅个人意见)，还有类似的措施，并且不要轻易放弃，除非数十个程序员都在时间上有太多的压力。即使只是很少的而且易于被静态分析发现的错误被捕获修正，那么积少成多起来，这个意义也是巨大的。</p>
+<p>我会去关注每次PVS-Studio的更新，因为用它的新规则能在我们的代码库里发现些新的东西。这隐含着一件事情，假如你有足够大的代码库，任何看起来是句法上合法的代码总能被证明存在一些未知类型的问题。在一个庞大的项目里，代码质量很少被用来当作实关键性的指标来统计，这样的造成的结果就是缺陷满目皆是，你能做的只是希望能去最小化他们对用户的影响。</p>
+<p>分析工具本身工作起来就是束手束脚的，强制在并不是它们所期望的信息里面去推断出一些东西，在这种限制下其实也只能做出一些很保守的 假设。所以你应该更加尽你所能去配合他们进行分析，乐于用索引代替指针运算，试着让你的函数调用关系集合在一个源文件里，给代码加上清晰明了的注释，等等。任何不能易于被静态分析工具分析的代码，也不会让你的同事们完全理解的。在黑客间传播的所谓的 “受虐般的语言” （ “苦行僧式的语言” ，“苦逼的语言”，“bondage and discipline languages”）   其实是目光短浅的象征 – 需求烦杂，耗日长久，人数众多的大型项目和你自娱自乐的玩意完全是两码事。</p>
+<p>另外，空指针是C/C++最大的问题，至少在我们代码里面是这样。将一个值同时当成一个指示标志或者是一个地址那将会造成无法计数的问题。在C++ 里无论如何最好使用引用“&amp;”来替代指针，虽然引用本身就是个指针，但是它隐含约束了不能为NULL。在将指针转换成引用时先要进行空值检查，这样你就能忽略之后的问题了。当然有很多已被固化的编程方式是危险，不过我还不确定如何去很好的规避NULL值的检查。</p>
+<p>其次是使用Printf函数来格式化字符串时产生的错误，需要格外声明的一点是，如果用idStr来代替idStr::c_str()作为参数时，那么程序基本 上都会奔溃掉，不过如果能将我们所有的不确定参数数目的函数加上/analyze的标注，那么静态分析工具就能很好的帮助我们去检查它们并避免这种问题的发生。还有一打子的问题隐藏在那些具有教育意义的警告信息里，这些问题在一些比较未知的条件就会触发其中的某些代码片段然后导致程序奔溃，同时这也说明了我们传统测试在代码覆盖率方面的缺失。</p>
+<p>还有很多严重的问题发生在原有代码被其他开发人员在很长的一段时间后被修改。不可理解的例子是：原有很完善的代码已经在执行操作前做了NULL值的检查，不过之后的修改是，这个指针被操作过后没有进行NULL检查就再次被使用了。单从这个错误来看的话，其实是代码执行路径过于复杂造成的问题，但当你追溯下发生的历史后，远不止这点，真正的原因是没有在程序员修改代码前传达清楚一些修改的先决条件。</p>
+<p>很显然，人的精力是有限的，所以要有所舍取，比如时刻关注那些要被发布给客户的代码，要比关注那些内部使用的代码要现实的多。然后再大胆的将发布过的代码迁移到独立的较小的开发的项目里。最近看过一篇论文，其中提到无论何式何样的代码质量度量方法，他们之间至少存在的关系是：代码规模和错误率是紧密联系的，如果抛开代码规模那么本质上所有的方法对错误甄别能力都是相同的。可见代码规模是一个很关键的标准，所以请精炼你的代码。</p>
+<p>还有不得不谈下并发，如果你没有亲自深入解决过所有并发带来的额外问题，那么你不会知道干掉它们到底有多困难。</p>
+<p>在软件开发中，很难做到对测试的真正控制，不过我感到欣慰的是我们已经对我们代码进行了彻底的分析而且我觉得有资格去说“不使用静态代码分析是不负责任的行为”( “静态代码分析 &gt; 责任 &gt; 天”，“代码兴亡，匹夫有责”)。不得不说的是在狂怒（Rage）游戏的自动化控制台的崩溃报告中有清晰的数据，尽管画面出现边缘破损是有很多原因的，不过还是很明显要强于大多数同时期的主流游戏。PC版本发布的狂怒（Rage）游戏悲剧性的问题是显卡的底层图形驱动引起的 - 我敢打赌AMD没有对他们的图形驱动使用过静态代码分析。</p>
+<p>让我们行动起来：如果你当前版本的Visual Studio有/analyze选项的话，那么开启它，尝试一下吧！如果我不得不只去选一个工具的话，那我会选微软的，确实不错哦！其他人如果也使用Visual Studio来工作的话，请至少也尝试下PVS-Studio演示版本哇！亲，如果你是开发商业软件不缺钱的话，那购买一个静态分析工具那更是物超所值的哟！</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://lostplesed.github.io/2014/11/27/%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/" data-id="ckstrp3aq002906ckdihf3r83" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "静态代码分析",
+        "image": "http://lostplesed.github.io",
+        "keywords": "john camack",
+        "genre": "Program",
+        "datePublished": "2014-11-27",
+        "dateCreated": "2014-11-27",
+        "dateModified": "2021-08-27",
+        "url": "http://lostplesed.github.io/2014/11/27/静态代码分析/",
+        "description": "原文链接：http://article.yeeyan.org/view/142563/242891
+原作者：John Camack
+译者：hijackjave
+
+近些年来，我作为一个程序员，做过的最重要的事情莫过于大胆的推崇静态代码分析了。它的意义甚至大于我以往所解决的数百个严重的bug，更颠覆了我对软件可靠性和代码质量的一贯认识。
+至此首先要说的很重要一点是:  质量并不代表一切，而且去承认这一"
+        "wordCount": 105
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/11/27/%E8%B6%85%E6%97%B6%E7%A9%BA%E4%B9%8B%E8%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            超时空之轮
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/11/python%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/conda.png)" alt="python运行环境搭建" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2020/02/11/python%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="title">python运行环境搭建</a></p>
+                            <p class="item-date"><time datetime="2020-02-10T16:00:00.000Z" itemprop="datePublished">2020-02-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/08/22/%E7%94%B2%E5%AD%90%E5%9B%AD/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/koushien.jpg)" alt="甲子园" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2019/08/22/%E7%94%B2%E5%AD%90%E5%9B%AD/" class="title">甲子园</a></p>
+                            <p class="item-date"><time datetime="2019-08-21T16:00:00.000Z" itemprop="datePublished">2019-08-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/john_carmack.webp)" alt="Programming_advice_from_John_Carmack" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="title">Programming_advice_from_John_Carmack</a></p>
+                            <p class="item-date"><time datetime="2019-02-19T16:00:00.000Z" itemprop="datePublished">2019-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/SeanCarroll.jpg)" alt="SeanCaroll：一名物理学家的生死观" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="title">SeanCaroll：一名物理学家的生死观</a></p>
+                            <p class="item-date"><time datetime="2016-09-02T16:00:00.000Z" itemprop="datePublished">2016-09-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2015/12/16/%E4%BA%BA%E7%94%9F%E4%B8%8D%E4%BB%85%E4%BB%85%E5%8F%AA%E6%9C%89%E5%A4%B1%E5%8E%BB/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/kojima_productions.jpg)" alt="人生不仅仅只有失去" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2015/12/16/%E4%BA%BA%E7%94%9F%E4%B8%8D%E4%BB%85%E4%BB%85%E5%8F%AA%E6%9C%89%E5%A4%B1%E5%8E%BB/" class="title">人生不仅仅只有失去</a></p>
+                            <p class="item-date"><time datetime="2015-12-15T16:00:00.000Z" itemprop="datePublished">2015-12-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><span class="category-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hanasaku-Iroha/" rel="tag">Hanasaku Iroha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cat/" rel="tag">cat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/characters/" rel="tag">characters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrono-tigger/" rel="tag">chrono tigger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clanned/" rel="tag">clanned</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/encoding/" rel="tag">encoding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-camack/" rel="tag">john camack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-carmack/" rel="tag">john carmack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimize/" rel="tag">optimize</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physical/" rel="tag">physical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/the-legend-of-zelda/" rel="tag">the legend of zelda</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Hanasaku-Iroha/" style="font-size: 10px;">Hanasaku Iroha</a> <a href="/tags/cat/" style="font-size: 10px;">cat</a> <a href="/tags/characters/" style="font-size: 10px;">characters</a> <a href="/tags/chrono-tigger/" style="font-size: 10px;">chrono tigger</a> <a href="/tags/clanned/" style="font-size: 10px;">clanned</a> <a href="/tags/encoding/" style="font-size: 10px;">encoding</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/john-camack/" style="font-size: 10px;">john camack</a> <a href="/tags/john-carmack/" style="font-size: 13.33px;">john carmack</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/optimize/" style="font-size: 16.67px;">optimize</a> <a href="/tags/physical/" style="font-size: 10px;">physical</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/the-legend-of-zelda/" style="font-size: 13.33px;">the legend of zelda</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 John Doe</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
