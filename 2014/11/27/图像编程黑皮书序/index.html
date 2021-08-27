@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>图像编程黑皮书序 | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="john carmack" />
+    
+    <meta name="description" content="I got my start programming on Apple II computers at school, and almost all of my early work was on the Apple platform. After graduating, it quickly became obvious that I was going to have trouble pay">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像编程黑皮书序">
+<meta property="og:url" content="http://lostplesed.github.io/2014/11/27/%E5%9B%BE%E5%83%8F%E7%BC%96%E7%A8%8B%E9%BB%91%E7%9A%AE%E4%B9%A6%E5%BA%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="I got my start programming on Apple II computers at school, and almost all of my early work was on the Apple platform. After graduating, it quickly became obvious that I was going to have trouble pay">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://lostplesed.github.io/images/7.jpg">
+<meta property="article:published_time" content="2014-11-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-27T02:10:05.488Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="john carmack">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://lostplesed.github.io/images/7.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Program/">Program</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-图像编程黑皮书序" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        图像编程黑皮书序
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2014/11/27/%E5%9B%BE%E5%83%8F%E7%BC%96%E7%A8%8B%E9%BB%91%E7%9A%AE%E4%B9%A6%E5%BA%8F/" class="article-date">
+            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/john-carmack/" rel="tag">john carmack</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="/images/7.jpg"></p>
+<p>I got my start programming on Apple II computers at school, and almost all of my early work was on the Apple platform. After graduating, it quickly became obvious that I was going to have trouble paying my rent working in the Apple II market in the late eighties, so I was forced to make a very rapid move into the Intel PC environment.</p>
+<p>What I was able to pick up over several years on the Apple, I needed to learn in the space of a few months on the PC.</p>
+<p>The biggest benefit to me of actually making money as a programmer was the ability to buy all the books and magazines I wanted. I bought a lot. I was in territory that I new almost nothing about, so I read everything that I could get my hands on. Feature articles, editorials, even advertisements held information for me to assimilate.</p>
+<p>John Romero clued me in early to the articles by Michael Abrash. The good stuff. Graphics hardware. Code optimization. Knowledge and wisdom for the aspiring developer. They were even fun to read. For a long time, my personal quest was to find a copy of Michael’s first book, Zen of Assembly Language. I looked in every bookstore I visited, but I never did find it. I made do with the articles I could dig up.</p>
+<p>I learned the dark secrets of the EGA video controller there, and developed a few neat tricks of my own. Some of those tricks became the basis for the Commander Keen series of games, which launched id Software.<br>￼<br>￼A year or two later, after Wolfenstein-3D, I bumped into Michael (in a virtual sense) for the first time. I was looking around on M&amp;T Online, a BBS run by the Dr. Dobb’s publishers before the Internet explosion, when I saw some posts from the man himself. We traded email, and for a couple months we played tag-team gurus on the graphics forum before Doom’s development took over my life.</p>
+<p>A friend of Michael’s at his new job put us back in touch with each other after Doom began to make its impact, and I finally got a chance to meet up with him in person.</p>
+<p>I talked myself hoarse that day, explaining all the ins and outs of Doom to Michael and an interested group of his coworkers. Every few days afterwards, I would get an email from Michael asking for an elaboration on one of my points, or discussing an aspect of the future of graphics.</p>
+<p>Eventually, I popped the question—I offered him a job at id. “Just think: no reporting to anyone, an opportunity to code all day, starting with a clean sheet of paper. A chance to do the right thing as a programmer.” It didn’t work. I kept at it though, and about a year later I finally convinced him to come down and take a look at id. I was working on Quake.</p>
+<p>Going from Doom to Quake was a tremendous step. I knew where I wanted to end up, but I wasn’t at all clear what the steps were to get there. I was trying a huge number of approaches, and even the failures were teaching me a lot. My enthusiasm must have been contagious, because he took the job.</p>
+<p>Much heroic programming ensued. Several hundred thousand lines of code were written. And rewritten. And rewritten. And rewritten.</p>
+<p>In hindsight, I have plenty of regrets about various aspects of Quake, but it is a rare person that doesn’t freely acknowledge the technical triumph of it. We nailed it. Sure, a year from now I will have probably found a new perspective that will make me cringe at the clunkiness of some part of Quake, but at the moment it still looks pretty damn good to me.</p>
+<p>I was very happy to have Michael describe much of the Quake technology in his ongoing magazine articles. We learned a lot, and I hope we managed to teach a bit.</p>
+<p>When a non-programmer hears about Michael’s articles or the source code I have released, I usually get a stunned “WTF would you do that for???” look.</p>
+<p>They don’t get it.</p>
+<p>Programming is not a zero-sum game. Teaching something to a fellow programmer doesn’t take it away from you. I’m happy to share what I can, because I’m in it for the love of programming. The Ferraris are just gravy, honest!</p>
+<p>This book contains many of the original articles that helped launch my programming career. I hope my contribution to the contents of the later articles can provide similar stepping stones for others.</p>
+<p>—John Carmack</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://lostplesed.github.io/2014/11/27/%E5%9B%BE%E5%83%8F%E7%BC%96%E7%A8%8B%E9%BB%91%E7%9A%AE%E4%B9%A6%E5%BA%8F/" data-id="ckstschw90011d8ckh5hf74n6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "图像编程黑皮书序",
+        "image": "http://lostplesed.github.io/images/7.jpg",
+        "keywords": "john carmack",
+        "genre": "Program",
+        "datePublished": "2014-11-27",
+        "dateCreated": "2014-11-27",
+        "dateModified": "2021-08-27",
+        "url": "http://lostplesed.github.io/2014/11/27/图像编程黑皮书序/",
+        "description": "
+I got my start programming on Apple II computers at school, and almost all of my early work was on the Apple platform. After graduating, it quickly became obvious that I was going to have trouble pay"
+        "wordCount": 756
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/11/27/%E5%86%8D%E8%A7%81%E4%BA%86%E5%91%BC%E5%99%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            再见了呼噜
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2014/11/27/%E6%91%87%E6%BB%9A%E5%B0%91%E5%B9%B4/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">摇滚少年</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/11/python%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/conda.png)" alt="python运行环境搭建" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2020/02/11/python%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="title">python运行环境搭建</a></p>
+                            <p class="item-date"><time datetime="2020-02-10T16:00:00.000Z" itemprop="datePublished">2020-02-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/08/22/%E7%94%B2%E5%AD%90%E5%9B%AD/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/koushien.jpg)" alt="甲子园" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2019/08/22/%E7%94%B2%E5%AD%90%E5%9B%AD/" class="title">甲子园</a></p>
+                            <p class="item-date"><time datetime="2019-08-21T16:00:00.000Z" itemprop="datePublished">2019-08-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/john_carmack.webp)" alt="Programming_advice_from_John_Carmack" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="title">Programming_advice_from_John_Carmack</a></p>
+                            <p class="item-date"><time datetime="2019-02-19T16:00:00.000Z" itemprop="datePublished">2019-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/SeanCarroll.jpg)" alt="SeanCaroll：一名物理学家的生死观" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="title">SeanCaroll：一名物理学家的生死观</a></p>
+                            <p class="item-date"><time datetime="2016-09-02T16:00:00.000Z" itemprop="datePublished">2016-09-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2015/12/16/%E4%BA%BA%E7%94%9F%E4%B8%8D%E4%BB%85%E4%BB%85%E5%8F%AA%E6%9C%89%E5%A4%B1%E5%8E%BB/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/kojima_productions.jpg)" alt="人生不仅仅只有失去" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2015/12/16/%E4%BA%BA%E7%94%9F%E4%B8%8D%E4%BB%85%E4%BB%85%E5%8F%AA%E6%9C%89%E5%A4%B1%E5%8E%BB/" class="title">人生不仅仅只有失去</a></p>
+                            <p class="item-date"><time datetime="2015-12-15T16:00:00.000Z" itemprop="datePublished">2015-12-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><span class="category-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hanasaku-Iroha/" rel="tag">Hanasaku Iroha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cat/" rel="tag">cat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/characters/" rel="tag">characters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrono-tigger/" rel="tag">chrono tigger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clanned/" rel="tag">clanned</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/encoding/" rel="tag">encoding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-camack/" rel="tag">john camack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-carmack/" rel="tag">john carmack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimize/" rel="tag">optimize</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physical/" rel="tag">physical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/the-legend-of-zelda/" rel="tag">the legend of zelda</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Hanasaku-Iroha/" style="font-size: 10px;">Hanasaku Iroha</a> <a href="/tags/cat/" style="font-size: 10px;">cat</a> <a href="/tags/characters/" style="font-size: 10px;">characters</a> <a href="/tags/chrono-tigger/" style="font-size: 10px;">chrono tigger</a> <a href="/tags/clanned/" style="font-size: 10px;">clanned</a> <a href="/tags/encoding/" style="font-size: 10px;">encoding</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/john-camack/" style="font-size: 10px;">john camack</a> <a href="/tags/john-carmack/" style="font-size: 13.33px;">john carmack</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/optimize/" style="font-size: 16.67px;">optimize</a> <a href="/tags/physical/" style="font-size: 10px;">physical</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/the-legend-of-zelda/" style="font-size: 13.33px;">the legend of zelda</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 John Doe</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

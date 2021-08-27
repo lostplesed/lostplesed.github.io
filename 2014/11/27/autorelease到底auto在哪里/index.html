@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>autorelease到底auto在哪里 | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="ios" />
+    
+    <meta name="description" content="Retain &amp; Release在Objective-C中，每一个对象都有一个引用计数值(reference count)。对于新创建的对象其初始值为1，向一个对象发送retain消息会让它的引用计数加1；而向其发送release消息则会对让引用计数减1。如果引用计数爲1時被release，则这个对象会被发送一个dealloc消息进行销毁, 所以也不會存在计数为0的对象。 所以一般在Ob">
+<meta property="og:type" content="article">
+<meta property="og:title" content="autorelease到底auto在哪里">
+<meta property="og:url" content="http://lostplesed.github.io/2014/11/27/autorelease%E5%88%B0%E5%BA%95auto%E5%9C%A8%E5%93%AA%E9%87%8C/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Retain &amp; Release在Objective-C中，每一个对象都有一个引用计数值(reference count)。对于新创建的对象其初始值为1，向一个对象发送retain消息会让它的引用计数加1；而向其发送release消息则会对让引用计数减1。如果引用计数爲1時被release，则这个对象会被发送一个dealloc消息进行销毁, 所以也不會存在计数为0的对象。 所以一般在Ob">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://lostplesed.github.io/images/ios.png">
+<meta property="article:published_time" content="2014-11-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-27T02:10:05.486Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://lostplesed.github.io/images/ios.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Program/">Program</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-autorelease到底auto在哪里" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        autorelease到底auto在哪里
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2014/11/27/autorelease%E5%88%B0%E5%BA%95auto%E5%9C%A8%E5%93%AA%E9%87%8C/" class="article-date">
+            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/ios/" rel="tag">ios</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="/images/ios.png"></p>
+<h1 id="Retain-amp-Release"><a href="#Retain-amp-Release" class="headerlink" title="Retain &amp; Release"></a>Retain &amp; Release</h1><p>在Objective-C中，每一个对象都有一个引用计数值(reference count)。对于新创建的对象其初始值为1，向一个对象发送retain消息会让它的引用计数加1；而向其发送release消息则会对让引用计数减1。如果引用计数爲1時被release，则这个对象会被发送一个dealloc消息进行销毁, 所以也不會存在计数为0的对象。</p>
+<p>所以一般在Objective-C中如果你alloc，retain或者copy了一个对象，那么你就应该负责release该对象。但这里也有一个问题，就是我们有时无法预知何时释放对象(比如说需要返回一个对象时)，如果过早释放，则对象无法被继续使用，如果没有释放，则可能会造成内存泄露。于是Foundation中提供了NSAutoreleasePool作为解决方案。</p>
+<h1 id="NSAutoreleasePool"><a href="#NSAutoreleasePool" class="headerlink" title="NSAutoreleasePool"></a>NSAutoreleasePool</h1><p>autorelease这个方法是在NSObject中实现的，它所做的事情就是调用</p>
+<pre><code>[NSAutoreleasePool addObject:self];
+</code></pre>
+<p>由于addObject是一个类方法，所以它需要查找对应的实例去执行操作。 NSAutoreleasePool的实例保存在每个线程中一个特定的栈里，释放池创建时会被压入该栈中，而当销毁时它会被弹出栈。当需要获取当前的释放池时，NSAutoreleasePool就会从当前的栈顶取出释放池进行操作。找到对应的释放池后addObject方法会将需要自动释放的对象加入到释放池对象的一个列表中。最后，当释放池将被销毁时，池中的每个对象就会被发送一个release消息。如果被销毁的释放池不位于栈的顶部，那么位于它之上的所有释放池也会被销毁。</p>
+<p>在引用计数的环境下，Cocoa希望总是有一个自动释放池可用。如果没有自动释放池可以使用，你放入自动释放池中的对象得不到释放，产生了内存泄漏。在这种情况下你的程序应该给与相应的警告日志提醒。</p>
+<p>应用程序框架会在每次主线程驱动事件循环开始时创建一个自动释放池。当这个事件循环结束时，会释放掉这个事件循环过程中产生的自动释放对象。所以我们基本上不用自己去创建自动释放池。如果你在程序中的某段代码快内创建了大量的自动释放的临时对象，那么你应该在代码快的开始创建自己的自动释放池。</p>
+<p>什么是事件循环呢？这里引用Apple文档里面的一句话：</p>
+<blockquote>
+<p>An event loop is simply a run loop: an event-processing loop for scheduling work and coordinating the receipt of events from various input sources attached to the run loop.</p>
+</blockquote>
+<p>可以是NSTimer的一次回调过程，或者某个iphone上的触摸事件，异步http连接下当接受完数据时，甚至是程序代理类控制的各个过程，比如加载完成时，即将结束时的函数调用。</p>
+<p>每个线程（包含主线程）都有一个管理NSAutoreleasePool实例的栈。当自动释放池创建后就会被压入栈中，当释放时就会从栈顶弹出。当线程终止时，所有在该线程栈中的NSAutoreleasePool实例都会被释放。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://lostplesed.github.io/2014/11/27/autorelease%E5%88%B0%E5%BA%95auto%E5%9C%A8%E5%93%AA%E9%87%8C/" data-id="ckstschvw0005d8ckdchw3nwx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "autorelease到底auto在哪里",
+        "image": "http://lostplesed.github.io/images/ios.png",
+        "keywords": "ios",
+        "genre": "Program",
+        "datePublished": "2014-11-27",
+        "dateCreated": "2014-11-27",
+        "dateModified": "2021-08-27",
+        "url": "http://lostplesed.github.io/2014/11/27/autorelease到底auto在哪里/",
+        "description": "
+Retain &amp; Release在Objective-C中，每一个对象都有一个引用计数值(reference count)。对于新创建的对象其初始值为1，向一个对象发送retain消息会让它的引用计数加1；而向其发送release消息则会对让引用计数减1。如果引用计数爲1時被release，则这个对象会被发送一个dealloc消息进行销毁, 所以也不會存在计数为0的对象。
+所以一般在Ob"
+        "wordCount": 46
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/11/27/Do%20What%20You%20Love/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Do What You Love
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2014/11/27/%E3%80%8A%E5%A1%9E%E5%B0%94%E8%BE%BE%EF%BC%9A%E6%97%B6%E4%B9%8B%E7%AC%9B%E3%80%8B%E6%84%9F%E6%83%B3%EF%BC%9A%E7%A9%BA%E7%AD%90%E7%9A%84%E8%89%BA%E6%9C%AF/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">《塞尔达：时之笛》感想：空筐的艺术</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/11/python%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/conda.png)" alt="python运行环境搭建" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2020/02/11/python%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="title">python运行环境搭建</a></p>
+                            <p class="item-date"><time datetime="2020-02-10T16:00:00.000Z" itemprop="datePublished">2020-02-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/08/22/%E7%94%B2%E5%AD%90%E5%9B%AD/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/koushien.jpg)" alt="甲子园" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2019/08/22/%E7%94%B2%E5%AD%90%E5%9B%AD/" class="title">甲子园</a></p>
+                            <p class="item-date"><time datetime="2019-08-21T16:00:00.000Z" itemprop="datePublished">2019-08-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/john_carmack.webp)" alt="Programming_advice_from_John_Carmack" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="title">Programming_advice_from_John_Carmack</a></p>
+                            <p class="item-date"><time datetime="2019-02-19T16:00:00.000Z" itemprop="datePublished">2019-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/SeanCarroll.jpg)" alt="SeanCaroll：一名物理学家的生死观" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="title">SeanCaroll：一名物理学家的生死观</a></p>
+                            <p class="item-date"><time datetime="2016-09-02T16:00:00.000Z" itemprop="datePublished">2016-09-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2015/12/16/%E4%BA%BA%E7%94%9F%E4%B8%8D%E4%BB%85%E4%BB%85%E5%8F%AA%E6%9C%89%E5%A4%B1%E5%8E%BB/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/kojima_productions.jpg)" alt="人生不仅仅只有失去" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2015/12/16/%E4%BA%BA%E7%94%9F%E4%B8%8D%E4%BB%85%E4%BB%85%E5%8F%AA%E6%9C%89%E5%A4%B1%E5%8E%BB/" class="title">人生不仅仅只有失去</a></p>
+                            <p class="item-date"><time datetime="2015-12-15T16:00:00.000Z" itemprop="datePublished">2015-12-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><span class="category-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hanasaku-Iroha/" rel="tag">Hanasaku Iroha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cat/" rel="tag">cat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/characters/" rel="tag">characters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrono-tigger/" rel="tag">chrono tigger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clanned/" rel="tag">clanned</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/encoding/" rel="tag">encoding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-camack/" rel="tag">john camack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-carmack/" rel="tag">john carmack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimize/" rel="tag">optimize</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physical/" rel="tag">physical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/the-legend-of-zelda/" rel="tag">the legend of zelda</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Hanasaku-Iroha/" style="font-size: 10px;">Hanasaku Iroha</a> <a href="/tags/cat/" style="font-size: 10px;">cat</a> <a href="/tags/characters/" style="font-size: 10px;">characters</a> <a href="/tags/chrono-tigger/" style="font-size: 10px;">chrono tigger</a> <a href="/tags/clanned/" style="font-size: 10px;">clanned</a> <a href="/tags/encoding/" style="font-size: 10px;">encoding</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/john-camack/" style="font-size: 10px;">john camack</a> <a href="/tags/john-carmack/" style="font-size: 13.33px;">john carmack</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/optimize/" style="font-size: 16.67px;">optimize</a> <a href="/tags/physical/" style="font-size: 10px;">physical</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/the-legend-of-zelda/" style="font-size: 13.33px;">the legend of zelda</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 John Doe</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

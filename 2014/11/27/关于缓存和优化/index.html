@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>关于缓存和优化 | Hexo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="optimize" />
+    
+    <meta name="description" content="缓存 现代处理器在读&#x2F;写内存时是十分缓慢的，通常需要几千个处理器周期才能完成。和CPU里的寄存器相比，存取寄存器只需要十几个周期，甚至有时只需要一个周期。为了降低读&#x2F;写主内存的平均时间，现代处理器会采用高速的内存缓存(cache)。 缓存是一种特殊的内存，当CPU首次读取某内存区域的内容时，该内存小块会载入高速缓存。这个内存块单位称为缓存线(cache line)，缓存线通常在8至512字节，具体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于缓存和优化">
+<meta property="og:url" content="http://lostplesed.github.io/2014/11/27/%E5%85%B3%E4%BA%8E%E7%BC%93%E5%AD%98%E5%92%8C%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="缓存 现代处理器在读&#x2F;写内存时是十分缓慢的，通常需要几千个处理器周期才能完成。和CPU里的寄存器相比，存取寄存器只需要十几个周期，甚至有时只需要一个周期。为了降低读&#x2F;写主内存的平均时间，现代处理器会采用高速的内存缓存(cache)。 缓存是一种特殊的内存，当CPU首次读取某内存区域的内容时，该内存小块会载入高速缓存。这个内存块单位称为缓存线(cache line)，缓存线通常在8至512字节，具体">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://lostplesed.github.io/images/17.jpg">
+<meta property="article:published_time" content="2014-11-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-27T02:10:05.487Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="optimize">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://lostplesed.github.io/images/17.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Game/">Game</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Program/">Program</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://lostplesed.github.io"></form>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Program/">Program</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-关于缓存和优化" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        关于缓存和优化
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2014/11/27/%E5%85%B3%E4%BA%8E%E7%BC%93%E5%AD%98%E5%92%8C%E4%BC%98%E5%8C%96/" class="article-date">
+            <time datetime="2014-11-26T16:00:00.000Z" itemprop="datePublished">2014-11-27</time>
+        </a>
+    </div>
+
+		
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/optimize/" rel="tag">optimize</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><hr>
+<p>现代处理器在读/写内存时是十分缓慢的，通常需要几千个处理器周期才能完成。和CPU里的寄存器相比，存取寄存器只需要十几个周期，甚至有时只需要一个周期。为了降低读/写主内存的平均时间，现代处理器会采用高速的内存<strong>缓存</strong>(cache)。</p>
+<p>缓存是一种特殊的内存，当CPU首次读取某内存区域的内容时，该内存小块会载入高速缓存。这个内存块单位称为<strong>缓存线</strong>(cache line)，缓存线通常在8至512字节，具体视CPU架构而定。以后CPU再次读取数据，该数据已在缓存中，那么数据就可以直接从缓存加载到CPU，这个过程比直接从内存中读取快很多。如果要求的数据不在缓存中，才必须读取主内存。这种情况叫做<strong>缓存命中失败</strong>(cache miss)。我们基本很难避免不出现miss，但是通过最优的方式安排内存中的数据和操作数据的算法代码，就可以减少miss的次数。</p>
+<p>现代CPU上面的<strong>一级</strong>(level 1, L1)缓存和<strong>二级</strong>(level 2, L2)缓存：</p>
+<p><img src="/images/17.jpg" alt="cpu_cache"></p>
+<p>主内存(Main RAM)比L2缓存慢，L2缓存比L1缓存慢，部件的价格则是反过来的。本人使用的是Mac，在BSD系统上可以通过命令来查询CPU参数：</p>
+<pre><code>Last login: Thu Mar  6 20:12:33 on console
+➜  ~  sysctl machdep.cpu 
+.......
+machdep.cpu.cache.linesize: 64
+machdep.cpu.cache.L2_associativity: 8
+machdep.cpu.cache.size: 256
+
+.......
+</code></pre>
+<h1 id="指令缓存和数据缓存"><a href="#指令缓存和数据缓存" class="headerlink" title="指令缓存和数据缓存"></a>指令缓存和数据缓存</h1><hr>
+<p>在为游戏引擎或者任何性能关键系统编写代码的时候，必须要明白不仅仅是只有游戏素材被塞入了内存中，游戏代码指令也被放入了内存。指令缓存(instruction cache, I-cache)会预载即将执行的机器码，而数据缓存(data cache, D-cache)则用来加速主内存读/写数据。大部分处理器会在物理上独立分开两种缓存。所以，程序变慢了，卡了，要考虑不仅仅是数据缓存命中失败，还可能是指令缓存命中失败。</p>
+<h3 id="避免数据缓存命中失败"><a href="#避免数据缓存命中失败" class="headerlink" title="避免数据缓存命中失败"></a>避免数据缓存命中失败</h3><ol>
+<li>把数据编排进连续的内存块中，避免CPU读取时跑来跑去。</li>
+<li>尺寸越小越好，这样才能把数据完整的塞入cache中。</li>
+<li>访问数据时要顺序。</li>
+</ol>
+<h3 id="避免指令缓存命中失败"><a href="#避免指令缓存命中失败" class="headerlink" title="避免指令缓存命中失败"></a>避免指令缓存命中失败</h3><p>这一部分是本篇文章的精华所在，数据缓存的道理在之前的代码编写中或多或少都有知道，明白在渲染过程中如果有大量随机读取内存时存在画面丢帧的现象。代码指令在内存中的布局基本上是由编译器和链接器决定的，几乎无法控制，然而，多数c/c++链接器都有一些简单规则，知悉并运用它们就能控制代码的内存布局。</p>
+<ol>
+<li>单个函数的机器码几乎总是置于连续的内存，绝大多数情况下，链接器不会把一个函数切开，并在中间放置另一个函数。</li>
+<li>编译器和链接器按函数在翻译单元源代码(.cpp文件)中的出现次序排列内存布局。</li>
+<li>位于一个翻译单元内的函数总是置于连续内存中。即链接器永不会把已编译的翻译单元切开，中间加插其他翻译单元的代码。在Visual C++编译器中可以使用函数级(function-level linking) /Gy选项，那么编译的输出单位为函数，链接时按各个函数并不一定以翻译单元内的次序进行布局。还可以在链接时使用/ORDER选项自定义函数的布局次序。</li>
+</ol>
+<p>因此，可以采用以下的经验法则。</p>
+<ol>
+<li>高效能代码的体积<strong>越小越好</strong>，体积以机器码指令数目为单位。（编译器和链接器会负责把函数置于<strong>连续</strong>内存。）</li>
+<li> 在性能关键的代码段落中，<strong>避免调用函数</strong>。</li>
+<li> 若要调用某函数，就把函数置于<strong>最接近</strong>调用函数的地方，最好是紧接调用函数的前后，而<strong>不要</strong>把该函数置于另一翻译单元（因为这样就完全无法控制两个函数的距离）。</li>
+<li> 谨慎地使用内联函数。内联小型函数能增进效能。然而过多的内联会增大代码体积，使性能关键代码再不能完全装进缓存。假设有一个处理大量数据的紧凑循环，若循环内的代码不能完全装进缓存，每个循环迭代便会产生两次指令缓存命中失败。遇到这种情况，最好重新思考算法及其代码实现，看看能否减少关键循环中的代码量。</li>
+</ol>
+<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><hr>
+<p>《游戏引擎架构》的作者是顽皮狗资深程序员Jason Gregory，之前听过一期机核网在GDC2012大会上联合采访顽皮狗的产品总监Benson Russell &amp; 程序员Marshall Robin的<a target="_blank" rel="noopener" href="https://itunes.apple.com/cn/podcast/gdc12-wan-pi-gou-zhuan-fang/id420660752?i=164008648&mt=2">节目</a>。我记得里面说到了策划们经常喜欢跑到程序那边看看他们在干嘛，往往那些程序员们都在盯着屏幕上面的一些统计图表傻笑，看着自己优化的代码又减少了多少ms的消耗。顽皮狗的游戏深受玩家们的喜爱，和所有策划，程序，美术的工作是离不开的，实现游戏本身的程序员们值得大家尊敬。</p>
+<p><img src="/images/18.jpg" alt="engine_time"></p>
+<p>《神秘海域2》引擎中的剖析分类显示，展示了多个顶层引擎系统的粗略计时。</p>
+<p><img src="/images/19.jpg" alt="function_cost"></p>
+<p>《神秘海域2》引擎中的阶梯式显示，让用户可以深入探究至某个函数调用的开销。</p>
+<p><img src="/images/20.jpg" alt="cpu_cost"></p>
+<p>《神秘海域2》引擎中的时间线模式，可完全展示单帧里多个操作在PS3 SPU,GPU,CPU上的运行情况。</p>
+<p>本文参考：<a target="_blank" rel="noopener" href="http://book.douban.com/subject/25815142/">《游戏引擎架构》</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://lostplesed.github.io/2014/11/27/%E5%85%B3%E4%BA%8E%E7%BC%93%E5%AD%98%E5%92%8C%E4%BC%98%E5%8C%96/" data-id="ckstschw7000ud8ckci216ui1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "John Doe"
+        },
+        "headline": "关于缓存和优化",
+        "image": "http://lostplesed.github.io/images/17.jpg",
+        "keywords": "optimize",
+        "genre": "Program",
+        "datePublished": "2014-11-27",
+        "dateCreated": "2014-11-27",
+        "dateModified": "2021-08-27",
+        "url": "http://lostplesed.github.io/2014/11/27/关于缓存和优化/",
+        "description": "缓存
+现代处理器在读/写内存时是十分缓慢的，通常需要几千个处理器周期才能完成。和CPU里的寄存器相比，存取寄存器只需要十几个周期，甚至有时只需要一个周期。为了降低读/写主内存的平均时间，现代处理器会采用高速的内存缓存(cache)。
+缓存是一种特殊的内存，当CPU首次读取某内存区域的内容时，该内存小块会载入高速缓存。这个内存块单位称为缓存线(cache line)，缓存线通常在8至512字节，具体"
+        "wordCount": 71
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="instagram" href="https://www.instagram.com/lostplesed" target="_blank" rel="noopener">
+                        <i class="icon fa fa-instagram"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2014/11/27/%E4%B8%80%E4%B8%AA%E6%B2%A1%E6%9C%89%E6%AD%A3%E7%A1%AE%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BC%95%E5%8F%91%E7%9A%84bug/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            一个没有正确初始化引发的bug
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2014/11/27/%E5%86%8D%E8%A7%81%E4%BA%86%E5%91%BC%E5%99%9C/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">再见了呼噜</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/11/python%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/conda.png)" alt="python运行环境搭建" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2020/02/11/python%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="title">python运行环境搭建</a></p>
+                            <p class="item-date"><time datetime="2020-02-10T16:00:00.000Z" itemprop="datePublished">2020-02-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/08/22/%E7%94%B2%E5%AD%90%E5%9B%AD/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/koushien.jpg)" alt="甲子园" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2019/08/22/%E7%94%B2%E5%AD%90%E5%9B%AD/" class="title">甲子园</a></p>
+                            <p class="item-date"><time datetime="2019-08-21T16:00:00.000Z" itemprop="datePublished">2019-08-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/john_carmack.webp)" alt="Programming_advice_from_John_Carmack" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Program/">Program</a></p>
+                            <p class="item-title"><a href="/2019/02/20/Programming_advice_from_John_Carmack/" class="title">Programming_advice_from_John_Carmack</a></p>
+                            <p class="item-date"><time datetime="2019-02-19T16:00:00.000Z" itemprop="datePublished">2019-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/SeanCarroll.jpg)" alt="SeanCaroll：一名物理学家的生死观" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2016/09/03/SeanCaroll%EF%BC%9A%E4%B8%80%E5%90%8D%E7%89%A9%E7%90%86%E5%AD%A6%E5%AE%B6%E7%9A%84%E7%94%9F%E6%AD%BB%E8%A7%82/" class="title">SeanCaroll：一名物理学家的生死观</a></p>
+                            <p class="item-date"><time datetime="2016-09-02T16:00:00.000Z" itemprop="datePublished">2016-09-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2015/12/16/%E4%BA%BA%E7%94%9F%E4%B8%8D%E4%BB%85%E4%BB%85%E5%8F%AA%E6%9C%89%E5%A4%B1%E5%8E%BB/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/kojima_productions.jpg)" alt="人生不仅仅只有失去" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2015/12/16/%E4%BA%BA%E7%94%9F%E4%B8%8D%E4%BB%85%E4%BB%85%E5%8F%AA%E6%9C%89%E5%A4%B1%E5%8E%BB/" class="title">人生不仅仅只有失去</a></p>
+                            <p class="item-date"><time datetime="2015-12-15T16:00:00.000Z" itemprop="datePublished">2015-12-16</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Game/">Game</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Program/">Program</a><span class="category-list-count">9</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">12</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hanasaku-Iroha/" rel="tag">Hanasaku Iroha</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cat/" rel="tag">cat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/characters/" rel="tag">characters</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrono-tigger/" rel="tag">chrono tigger</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clanned/" rel="tag">clanned</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/encoding/" rel="tag">encoding</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/" rel="tag">ios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-camack/" rel="tag">john camack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/john-carmack/" rel="tag">john carmack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/" rel="tag">life</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/optimize/" rel="tag">optimize</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/physical/" rel="tag">physical</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/the-legend-of-zelda/" rel="tag">the legend of zelda</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Hanasaku-Iroha/" style="font-size: 10px;">Hanasaku Iroha</a> <a href="/tags/cat/" style="font-size: 10px;">cat</a> <a href="/tags/characters/" style="font-size: 10px;">characters</a> <a href="/tags/chrono-tigger/" style="font-size: 10px;">chrono tigger</a> <a href="/tags/clanned/" style="font-size: 10px;">clanned</a> <a href="/tags/encoding/" style="font-size: 10px;">encoding</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/john-camack/" style="font-size: 10px;">john camack</a> <a href="/tags/john-carmack/" style="font-size: 13.33px;">john carmack</a> <a href="/tags/life/" style="font-size: 20px;">life</a> <a href="/tags/optimize/" style="font-size: 16.67px;">optimize</a> <a href="/tags/physical/" style="font-size: 10px;">physical</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/the-legend-of-zelda/" style="font-size: 13.33px;">the legend of zelda</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.facebook.com/profile.php?id=100006735798590">John Carmack</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://number-none.com/blow/blog/">Jonathon Blow</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://caseymuratori.com">Casey Muratori</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 John Doe</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
