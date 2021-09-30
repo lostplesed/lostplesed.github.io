@@ -20,7 +20,7 @@
 <meta property="og:description" content="基本数据类型除法&#x2F;总是得到浮点数 8 &#x2F; 5 # 1.6  除法&#x2F;&#x2F;去掉小数部分 8 &#x2F;&#x2F; 5 # 1  幂次运算使用** 5 ** 2 # 25  字符串使用单引号或者双引号标注，反斜杠\用于转义。如果不希望前置 \ 的字符转义成特殊字符，可以使用 原始字符串，在引号前添加 r 即可 &quot;doesn&#39;t&quot; &#39;&quot;Yes,&quot; they said.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-30T06:45:09.587Z">
+<meta property="article:modified_time" content="2021-09-30T06:48:11.383Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2021/09/30/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="article-date">
-     <time datetime="2021-09-30T06:45:09.587Z" itemprop="dateModified">2021-09-30</time>
+     <time datetime="2021-09-30T06:48:11.383Z" itemprop="dateModified">2021-09-30</time>
   </a>
 </div>
 
@@ -253,11 +253,7 @@ word[:2] # &#39;Py&#39;从开始到位置2（不包括）
 word[4:] # &#39;on&#39;从位置4（包括）到结束
 </code></pre>
 <h1 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h1><p>Python 的 for 语句不迭代算术递增数值，或是给予用户定义迭代步骤和暂停条件的能力，而是迭代列表或字符串等任意序列，元素的迭代顺序与在序列中出现的顺序一致。</p>
-<pre><code>words = [&#39;cat&#39;, &#39;window&#39;, &#39;defenestrate&#39;]
-for w in words:
-    print(w, len(w))
-    
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">words = [<span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;window&#x27;</span>, <span class="string">&#x27;defenestrate&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> w <span class="keyword">in</span> words:</span><br><span class="line">	<span class="built_in">print</span>(w, <span class="built_in">len</span>(w))</span><br></pre></td></tr></table></figure>
 <p>内置函数 range() 常用于遍历数字序列，该函数可以生成算术级数，生成的序列不包含给定的终止数值；range(10) 生成 10 个值，这是一个长度为 10 的序列，其中的元素索引都是合法的。range 可以不从 0 开始，还可以按指定幅度递增（递增幅度称为 ‘步进’，支持负数）</p>
 <pre><code>list(range(5, 10)) # [5, 6, 7, 8, 9]
 list(range(0, 10, 3)) # [0, 3, 6, 9]
@@ -273,7 +269,7 @@ list(range(-10, -100, -30)) # [-10, -40, -70]
 
 
 
-    <a data-url="http://lostplesed.github.io/2021/09/30/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" data-id="cku6kpdq200062yckbm8vhr98" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2021/09/30/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" data-id="cku6kt3o90007cyck94nchre9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -363,7 +359,7 @@ list(range(-10, -100, -30)) # [-10, -40, -70]
 字符串使用单引号或者双引号标注，反斜杠\用于转义。如果不希望前置 \ 的字符转义成特殊字符，可以使用 原始字符串，在引号前添加 r 即可
 &quot;doesn&#39;t&quot;
 &#39;&quot;Yes,&quot; they said.",
-        "wordCount": 185
+        "wordCount": 194
     }
 </script>
 
