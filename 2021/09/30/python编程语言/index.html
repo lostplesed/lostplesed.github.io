@@ -20,7 +20,7 @@
 <meta property="og:description" content="基本数据类型除法&#x2F;总是得到浮点数 8 &#x2F; 5 # 1.6  除法&#x2F;&#x2F;去掉小数部分 8 &#x2F;&#x2F; 5 # 1  幂次运算使用** 5 ** 2 # 25  字符串使用单引号或者双引号标注，反斜杠\用于转义。如果不希望前置 \ 的字符转义成特殊字符，可以使用 原始字符串，在引号前添加 r 即可 &quot;doesn&#39;t&quot; &#39;&quot;Yes,&quot; they said.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-30T08:21:54.248Z">
+<meta property="article:modified_time" content="2021-09-30T09:55:43.132Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2021/09/30/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="article-date">
-     <time datetime="2021-09-30T08:21:54.248Z" itemprop="dateModified">2021-09-30</time>
+     <time datetime="2021-09-30T09:55:43.132Z" itemprop="dateModified">2021-09-30</time>
   </a>
 </div>
 
@@ -266,7 +266,18 @@ list(range(-10, -100, -30)) # [-10, -40, -70]
 <p>range() 返回对象的操作和列表很像，但其实这两种对象不是一回事。迭代时，该对象基于所需序列返回连续项，并没有生成真正的列表，从而节省了空间。这种对象称为可迭代对象 iterable，函数或程序结构可通过该对象获取连续项，直到所有元素全部迭代完毕。for 语句就是这样的架构，sum() 是一种把可迭代对象作为参数的函数</p>
 <pre><code>sum(range(4)) # 6
 </code></pre>
-<p>end</p>
+<p>pass 语句不执行任何操作。语法上需要一个语句，但程序不实际执行任何动作时，可以使用该语句</p>
+<pre><code>while True:
+    pass
+    
+class EmptyClass:
+    pass
+    
+def EmptyFunc:
+    pass
+    
+</code></pre>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h1 id="复杂数据类型"><a href="#复杂数据类型" class="headerlink" title="复杂数据类型"></a>复杂数据类型</h1><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h2 id="元祖"><a href="#元祖" class="headerlink" title="元祖"></a>元祖</h2><h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/tutorial/index.html">https://docs.python.org/zh-cn/3/tutorial/index.html</a></p>
 
         </div>
         <footer class="article-footer">
@@ -274,7 +285,7 @@ list(range(-10, -100, -30)) # [-10, -40, -70]
 
 
 
-    <a data-url="http://lostplesed.github.io/2021/09/30/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" data-id="cku6p205l0006iockf15j5es8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2021/09/30/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" data-id="cku6rj2tq0006dpck5w5s0p96" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -364,7 +375,7 @@ list(range(-10, -100, -30)) # [-10, -40, -70]
 字符串使用单引号或者双引号标注，反斜杠\用于转义。如果不希望前置 \ 的字符转义成特殊字符，可以使用 原始字符串，在引号前添加 r 即可
 &quot;doesn&#39;t&quot;
 &#39;&quot;Yes,&quot; they said.",
-        "wordCount": 185
+        "wordCount": 238
     }
 </script>
 
