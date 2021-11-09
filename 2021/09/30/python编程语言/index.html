@@ -20,7 +20,7 @@
 <meta property="og:description" content="基本数据类型除法&#x2F;总是得到浮点数 18 &#x2F; 5 # 1.6  除法&#x2F;&#x2F;去掉小数部分 18 &#x2F;&#x2F; 5 # 1  幂次运算使用** 15 ** 2 # 25  字符串使用单引号或者双引号标注，反斜杠\用于转义。如果不希望前置 \ 的字符转义成特殊字符，可以使用 原始字符串，在引号前添加 r 即可 123&quot;doesn&amp;#x27;t&quot;&amp;#x27;&quot;Yes,&quot; the">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-09-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-09T06:36:48.923Z">
+<meta property="article:modified_time" content="2021-11-09T03:52:52.221Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2021/09/30/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="article-date">
-     <time datetime="2021-10-09T06:36:48.923Z" itemprop="dateModified">2021-10-09</time>
+     <time datetime="2021-11-09T03:52:52.221Z" itemprop="dateModified">2021-11-09</time>
   </a>
 </div>
 
@@ -292,8 +292,8 @@
 
 <h2 id="循环遍历数据结构"><a href="#循环遍历数据结构" class="headerlink" title="循环遍历数据结构"></a>循环遍历数据结构</h2><p>在字典中循环时，用 items() 方法可同时取出键和对应的值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">knights = &#123;<span class="string">&#x27;gallahad&#x27;</span>: <span class="string">&#x27;the pure&#x27;</span>, <span class="string">&#x27;robin&#x27;</span>: <span class="string">&#x27;the brave&#x27;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> knights.items():</span><br><span class="line">    <span class="built_in">print</span>(k, v)</span><br></pre></td></tr></table></figure>
-<p> 在序列中循环时，用 enumerate() 函数可以同时取出位置索引和对应的值：</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">enumerate</span>([<span class="string">&#x27;tic&#x27;</span>, <span class="string">&#x27;tac&#x27;</span>, <span class="string">&#x27;toe&#x27;</span>]):</span><br><span class="line">    <span class="built_in">print</span>(i, v)</span><br></pre></td></tr></table></figure>
+<p>在序列中循环时，用 enumerate() 函数可以同时取出位置索引和对应的值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i, v <span class="keyword">in</span> <span class="built_in">enumerate</span>([<span class="string">&#x27;tic&#x27;</span>, <span class="string">&#x27;tac&#x27;</span>, <span class="string">&#x27;toe&#x27;</span>]):</span><br><span class="line">    <span class="built_in">print</span>(i, v)</span><br></pre></td></tr></table></figure>
 
 <p>逆向循环序列时，先正向定位序列，然后调用 reversed() 函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">reversed</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>)):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
@@ -305,6 +305,32 @@
 <li>缩进使用4个空格</li>
 <li>类和函数的命名要一致；按惯例，命名类用 UpperCamelCase，命名函数与方法用 lowercase_with_underscores。命名方法中第一个参数总是用 self。</li>
 </ul>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>模块包含可执行语句及函数定义。这些语句用于初始化模块，且仅在 import 语句 第一次 遇到模块名时执行。模块有自己的私有符号表，用作模块中所有函数的全局符号表。因此，在模块内使用全局变量时，不用担心与用户定义的全局变量发生冲突。为了保证运行效率，每次解释器会话只导入一次模块。如果更改了模块内容，必须重启解释器；仅交互测试一个模块时，也可以使用 importlib.reload()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> importlib</span><br><span class="line">importlib.reload(modulename)</span><br></pre></td></tr></table></figure>
+
+<h2 id="模块搜索路径"><a href="#模块搜索路径" class="headerlink" title="模块搜索路径"></a>模块搜索路径</h2><p>导入 spam 模块时，解释器首先查找名为 spam 的内置模块。如果没找到，解释器再从 sys.path 变量中的目录列表里查找 spam.py 文件。sys.path 初始化时包含以下位置：</p>
+<ul>
+<li>输入脚本的目录（或未指定文件时的当前目录）。</li>
+<li>PYTHONPATH （目录列表，与 shell 变量 PATH 的语法一样）。</li>
+<li>The installation-dependent default (by convention including a site-packages directory, handled by the site module).</li>
+</ul>
+<h2 id="dir-函数"><a href="#dir-函数" class="headerlink" title="dir()函数"></a>dir()函数</h2><p>内置函数 dir() 用于查找模块定义的名称。返回结果是经过排序的字符串列表，没有参数时，dir() 列出当前定义的名称。该函数列出所有类型的名称：变量、模块、函数等。dir() 不会列出内置函数和变量的名称。这些内容的定义在标准模块 builtins 里。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dir</span>()</span><br><span class="line"><span class="keyword">import</span> builtins</span><br><span class="line"><span class="built_in">dir</span>(builtins)</span><br></pre></td></tr></table></figure>
+
+<h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><p>Python 只把含 <code>__init__.py</code> 文件的目录当成包。这样可以防止以 string 等通用名称命名的目录，无意中屏蔽出现在后方模块搜索路径中的有效模块。 最简情况下，<code>__init__.py</code> 只是一个空文件，但该文件也可以执行包的初始化代码，或设置<code>__all__</code>变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__all__ = [<span class="string">&quot;echo&quot;</span>, <span class="string">&quot;surround&quot;</span>, <span class="string">&quot;reverse&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>from sound.effects import * 将导入 sound 包中的这三个命名子模块。</p>
+<p>从包中导入单个模块，引用时必须使用子模块的全名。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sound.effects.echo</span><br><span class="line">sound.effects.echo.echofilter(<span class="built_in">input</span>, output, delay=<span class="number">0.7</span>, atten=<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<p>另一种导入子模块的方法，不加包前缀也可以使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sound.effects <span class="keyword">import</span> echo</span><br><span class="line">echo.echofilter(<span class="built_in">input</span>, output, delay=<span class="number">0.7</span>, atten=<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Import 语句的另一种变体是直接导入所需的函数或变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sound.effects.echo <span class="keyword">import</span> echofilter</span><br><span class="line">echofilter(<span class="built_in">input</span>, output, delay=<span class="number">0.7</span>, atten=<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意，使用 from package import item 时，item 可以是包的子模块（或子包），也可以是包中定义的函数、类或变量等其他名称。import 语句首先测试包中是否定义了 item；如果未在包中定义，则假定 item 是模块，并尝试加载。如果找不到 item，则触发 ImportError 异常。相反，使用 import item.subitem.subsubitem 句法时，除最后一项外，每个 item 都必须是包；最后一项可以是模块或包，但不能是上一项中定义的类、函数或变量。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/tutorial/index.html">https://docs.python.org/zh-cn/3/tutorial/index.html</a></p>
 
         </div>
@@ -313,7 +339,7 @@
 
 
 
-    <a data-url="http://lostplesed.github.io/2021/09/30/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" data-id="ckvkrgxt7001rlick7zjt6iuy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lostplesed.github.io/2021/09/30/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" data-id="ckvrkbbdl0006fvck16212g9w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -389,7 +415,7 @@
         "genre": "Program",
         "datePublished": "2021-09-30",
         "dateCreated": "2021-09-30",
-        "dateModified": "2021-10-09",
+        "dateModified": "2021-11-09",
         "url": "http://lostplesed.github.io/2021/09/30/python编程语言/",
         "description": "基本数据类型除法/总是得到浮点数
 18 / 5 # 1.6
@@ -402,7 +428,7 @@
 
 字符串使用单引号或者双引号标注，反斜杠\用于转义。如果不希望前置 \ 的字符转义成特殊字符，可以使用 原始字符串，在引号前添加 r 即可
 123&quot;doesn&#x27;t&quot;&#x27;&quot;Yes,&quot; the",
-        "wordCount": 1253
+        "wordCount": 1428
     }
 </script>
 
